@@ -1,0 +1,42 @@
+let str = "ASdsad"
+undefined
+let b = true
+SyntaxError: redeclaration of let b
+debugger eval code:1:1
+let bool = true
+undefined
+let num = 10
+undefined
+str
+"ASdsad"
+num
+10
+bool
+true
+str.__proto__
+String { "" }
+
+num.__proto__
+Number { 0 }
+
+bool.__proto__
+Boolean { false }
+
+str.__proto__.__proto__
+Object { … }
+
+num.__proto__.__proto__
+Object { … }
+
+num.__proto__.__proto__ === str.__proto__.__proto__
+true
+function fun () {}
+undefined
+fun.__proto__
+function ()
+
+fun.__proto__.__proto__
+Object { … }
+
+fun.__proto__.__proto__.__proto__
+null
