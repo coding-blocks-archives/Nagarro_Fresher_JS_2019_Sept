@@ -1,0 +1,70 @@
+'10' + 1
+"101"
+'10' + 1 + 1
+"1011"
+1 + 1 + '10'
+"210"
+
+'10' - 1
+9
+'a' - 1
+NaN
+typeof (1)
+"number"
+typeof ('10' - 1)
+"number"
+typeof ('a' - 1)
+"number"
+typeof NaN
+"number"
+1 / 0
+Infinity
+typeof Infinity
+"number"
+
+let x = '1'
+undefined
++x
+1
+x
+"1"
++''
+0
++'           '
+0
++'\n'
+0
++'\t'
+0
+
+
+true + 1
+2
+false + 1
+1
+
+
+1  == 1
+true
+1  == '1'
+true
+1  === '1'
+false
+1  === 1
+true
+false == ''
+true
+false == '\n'
+true
+'' == '\n'
+false
+'' == 0
+true
+'' == []
+true
+[1,2].toString()
+"1,2"
+[1].toString()
+"1"
+[].toString()
+""
