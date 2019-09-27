@@ -47,4 +47,8 @@ $('ul').on("click", function (e) {
   paint()
 })
 
+
+
+
+
 paint();
