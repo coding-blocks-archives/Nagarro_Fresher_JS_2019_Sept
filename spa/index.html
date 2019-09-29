@@ -1,25 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Todo List</title>
+
+    <!-- BootStrap CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        crossorigin="anonymous">
+
+    <!-- BootStrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous">
+    </script>
+
+    <style>
+        body{
+            background: linear-gradient(120deg,#963eff,#00e8ffa8)  no-repeat center center fixed;
+        }
+        button {
+            margin-left: 15px;
+        }
+
+        #allTaskLists>tr>th:hover {
+            cursor: pointer;
+        }
+    </style>
+
+    <script defer src="script.js"></script>
 </head>
-<style>
-  .striked {
-    text-decoration: line-through;
-  }
-</style>
+
 <body>
-  <input id="newTodo" type="text" placeholder="Add new todo">
-  <button onclick="addTodo()"> ADD +</button>
+    <h1 class="text-center">Todo Task List</h1>
+    <div class="container mt-3">
+        <div class="form-group row" style="background-color: aliceblue; padding: 8px;">
+            <label class="col-sm-2 col-form-label mt-3">Enter Task:</label>
+            <div class="col-sm-3 mt-3">
+                <input type="text" class="form-control-plaintext" id="taskData" placeholder="Enter Task Name">
+            </div>
+            <div class="col-sm-3 mt-3">
+                <input type="date" class="form-control-plaintext" id="completeionTIme">
+            </div>
 
-  <ul>
+            <div class="bs-component mt-3">
+                <div class="flex-row justify-content-center align-items-center">
+                    <button type="button" class="btn btn-success" id="addItm">Add</button>
+                    <button type="button" class="btn btn-info" id="sortItms">Sort</button>
+                    <button type="button" class="btn btn-warning" id="clearItm">Clear</button>
+                    <button type="button" class="btn btn-danger" id="resetItm">Done</button>
+                </div>
+            </div>
+        </div>
 
-  </ul>
+        <h3 style="margin-top: 3em">---Tasks---</h3>
+        <table class="table table-hover center" style="background-color: aliceblue; ">
+            <tr class="text-center">
+                <th scope="col">Task</th>
+                <th scope="col">Timming</th>
+                <th scope="col">Actions</th>
+            </tr>
+            <tbody id="allTaskLists" class="text-center">
 
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="index.js" defer></script>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
