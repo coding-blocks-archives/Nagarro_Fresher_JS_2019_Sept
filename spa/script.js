@@ -108,7 +108,6 @@ $(document).on("click", "button.delete", function (e) {
     clearTextAndFocus();
 });
 
-
 function clearTextAndFocus() {
     $("#taskData").val("");
     $("#completeionTIme").val("");
@@ -149,7 +148,6 @@ $("#resetItm").click(function (e) {
     renderTable(false);
     clearTextAndFocus()
 });
-
 
 //Sorting The TODO by the Date...
 
