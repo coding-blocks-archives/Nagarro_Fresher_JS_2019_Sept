@@ -1,4 +1,4 @@
-const todos = [
+let todos = [
   {
     id: 1,
     name: "Teach Class at Nagarro",
@@ -14,7 +14,10 @@ const todos = [
 function render(state) {
   return state
     .map(todo => {
-      const classString = todo.done ? `class = "striked"` : ''
+      // const li = document.createElement('li')
+      // li.classList.add("striked")
+      // document.body.append(li)
+      const classString = todo.done ? `class = "list-group-item striked"` : `class = "list-group-item"`
       return `<li data-todo="${todo.id}" ${classString}> ${todo.name} </li>`;
     })
     .join("");
@@ -39,12 +42,26 @@ function addTodo() {
 }
 
 
+
+function removeTodos() {
+  todos = todos.filter(todo => !todo.done)
+
+  paint()
+}
+
+
 $('ul').on("click", function (e) {
   const idToFind = e.target.dataset.todo
   const todo = todos.find(todo => todo.id == idToFind)
   todo.done = !todo.done
 
   paint()
+})
+
+$('#newTodo').on("keypress", function (e) {
+  if (e.which == 13) {
+    addTodo()
+  }
 })
 
 paint();
