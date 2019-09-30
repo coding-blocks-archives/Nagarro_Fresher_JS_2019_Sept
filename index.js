@@ -32,7 +32,6 @@ function paint() {
 }
 
 function addTodo() {
-  
   const inputBox = $('#newTodo')
   const dateBox = $('#TodoDate')
   if(inputBox.val() == '' || dateBox.val() == '' )
