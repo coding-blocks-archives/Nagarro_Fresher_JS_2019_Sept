@@ -10,7 +10,7 @@ let todos = [
       name: "Fork Github Repository",
       done: false,
       deadline: new Date(2019, 10, 11)
-    }
+    },
 
     {
       id: 3,
