@@ -73,8 +73,10 @@ $("#sortable").sortable({
 });
 
 function reset() {
-  $("#newTodo").val('');
-  $("#newTododate").val('');
+  // $("#newTodo").val('');
+  // $("#newTododate").val('');
+  todos=todos.filter(todo=>!todo)
+  paint()
 }
 
 $('ul').on("click", function (e) {
