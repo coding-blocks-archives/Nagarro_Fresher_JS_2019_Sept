@@ -12,30 +12,41 @@
     text-decoration: line-through;
   }
   ul > li:hover {
+    
     cursor: pointer;
+    background-color: aqua;
+  }
+  li{
+    background-color: white;
+    padding: 10px;
+    border: 3px solid black;
+    list-style-type: none;
   }
 </style>
-<body>
+<body style="background-color: black">
   <div class="container mt-5">
     <div class="row">
       <div class="col-8 form-group">
-          <input class="form-control" id="newTodo" type="text" placeholder="Today i must...">
+          <input class="form-control" id="enter" type="text" placeholder="Today i must...">
           <small class="form-text text-muted">Add a new todo</small>
+          <input class="form-control" id="tareek" type="date" placeholder="Today i must...">
+          <small class="form-text text-muted">Add a deadline</small>
       </div>
       <div class="col-4">
         <div class="flex-row justify-content-center align-items-center"> 
-          <button class="btn btn-primary mt-1 mt-md-0" onclick="addTodo()">ADD +</button>
-          <button class="btn btn-secondary mt-1 mt-md-0" >Reset</button>
-          <button class="btn btn-danger mt-1" onclick="removeTodos()">Bin</button>
+          <button class="btn btn-primary mt-1 mt-md-0" id="add">ADD +</button>
+          <button class="btn btn-secondary mt-1 mt-md-0" id="reset">Reset</button>
+          <button class="btn btn-danger mt-1" id="bin">Bin</button>
+          <button class="btn btn-success mt-1" id="sort">Sort</button>
         </div>
       </div>
     </div>
     
     <div class="row mt-2">
       <div class="col-10 offset-1">
-          <ul class="list-group">
+          <ul class="list-group" id="tasklist">
         
-            </ul>
+          </ul>
       </div>
       
     </div>
@@ -45,6 +56,14 @@
 
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="index.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
+
+
+
+
+
+
+ 
+
