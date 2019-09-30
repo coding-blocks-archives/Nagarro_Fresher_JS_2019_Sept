@@ -1,50 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-<style>
-  .striked {
-    text-decoration: line-through;
-  }
-  ul > li:hover {
-    cursor: pointer;
-  }
-</style>
-<body>
-  <div class="container mt-5">
-    <div class="row">
-      <div class="col-8 form-group">
-          <input class="form-control" id="newTodo" type="text" placeholder="Today i must...">
-          <small class="form-text text-muted">Add a new todo</small>
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <link rel="stylesheet" href="css/bootstrap.css">
+      <link rel="stylesheet" href="css/bootstrap-responsive.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+      <title>Document</title>
+   </head>
+   <style>
+      .striked {
+      text-decoration: line-through;
+      }
+   </style>
+   <body>
+     <div class="input-group mb-3">
+      <input id="newTodo" class=class="custom-file-input" type="text" placeholder="Add new todo" style="margin-left:40%;margin-top:50px">
+      <div class="input-group-append">
+         <button id="btn1" class="btn btn-primary btn-sm" onclick="addTodo()" style="margin-top:50px"> ADD +</button>
       </div>
-      <div class="col-4">
-        <div class="flex-row justify-content-center align-items-center"> 
-          <button class="btn btn-primary mt-1 mt-md-0" onclick="addTodo()">ADD +</button>
-          <button class="btn btn-secondary mt-1 mt-md-0" >Reset</button>
-          <button class="btn btn-danger mt-1" onclick="removeTodos()">Bin</button>
-        </div>
-      </div>
-    </div>
-    
-    <div class="row mt-2">
-      <div class="col-10 offset-1">
-          <ul class="list-group">
-        
-            </ul>
-      </div>
+     
+     </div> 
+	  
+      <table  style="margin-left:40%;margin-top:50px">
+      </table>
+	  
+      <button class="btn btn-dark btn-sm"  onclick="removeStrike()"  style="margin-left:44%;margin-top:4%">BIN </button>
+      <script>
+          $("#newTodo").keyup(function(event) { 
+            if (event.keyCode === 13) { 
+                $("#btn1").click("addTodo()"); 
+            } 
+        }); 
       
-    </div>
-    
-
-  </div>
-
-
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="index.js" defer></script>
-</body>
+      </script>
+      <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+      <script src="index.js" defer></script>
+   </body>
 </html>
