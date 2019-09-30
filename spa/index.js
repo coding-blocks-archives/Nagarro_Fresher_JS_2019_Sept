@@ -2,12 +2,14 @@ let todos = [
   {
     id: 1,
     name: "Teach Class at Nagarro",
-    done: true
+    done: true,
+    deadline:new Date()
   },
   {
     id: 2,
     name: "Get Coffee",
-    done: false
+    done: false,
+    deadline:new Date()
   }
 ];
 
@@ -29,15 +31,25 @@ function paint() {
 
 function addTodo() {
   // document.getElementById('newTodo') != $('#newTodo')
+  const dateVal=$('#deadline')
   const inputBox = $('#newTodo')
   todos.push({
     id: todos.length + 1,
     name: inputBox.val(),
-    done: false
+    done: false,
+    deadline:new Date(dateVal.val())
   })
 
   inputBox.val('')
 
+  paint()
+}
+function sortToDos(){
+  
+  todos.sort(function(a,b){
+   
+    return a.deadline-b.deadline
+  })
   paint()
 }
 
