@@ -11,6 +11,13 @@ let todos = [
       done: false,
       deadline: new Date(2019, 10, 11)
     }
+
+    {
+      id: 3,
+      name: "Implement Data Structures in java",
+      done: false,
+      deadline: new Date(2019, 10, 11)
+    }
   ];
   
   function render(state) {
