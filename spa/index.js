@@ -31,6 +31,8 @@ let todos = [
   const inputDate = $('#newDate')
   function addTodo() {
     const inputBox = $('#newTodo')
+    if(inputBox.val()=='' || inputDate.val()=='')
+      return;
     todos.push({
       id: todos.length + 1,
       name: inputBox.val(),
