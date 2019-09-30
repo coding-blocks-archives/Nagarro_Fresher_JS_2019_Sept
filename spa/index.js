@@ -61,9 +61,20 @@ function sortTodos() {
 }
 
 
-$("#sortable").sortable(function(){
-  
+$("#sortable").sortable({
+  update: function (event, ui) {
+    let temp = [];
+    var idsInOrder = $("#sortable").sortable().toArray();
+
+    children = idsInOrder[0].children;
+    for (var i = 0; i < children.length; i++) {
+      temp[i] = todos.find(todo => todo.id == children[i].attributes['0'].value)
+    }
+    todos = temp;
+    paint();
+  }
 });
+
 
 function reset() {
   $("#newTodo").val('');
