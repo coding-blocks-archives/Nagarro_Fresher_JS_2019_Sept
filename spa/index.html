@@ -21,12 +21,15 @@
       <div class="col-8 form-group">
           <input class="form-control" id="newTodo" type="text" placeholder="Today i must...">
           <small class="form-text text-muted">Add a new todo</small>
+          <input class="form-control" id="deadline" type="date" placeholder="Deadline...">
+          <small class="form-text text-muted">Add a Deadline</small>
       </div>
       <div class="col-4">
         <div class="flex-row justify-content-center align-items-center"> 
           <button class="btn btn-primary mt-1 mt-md-0" onclick="addTodo()">ADD +</button>
-          <button class="btn btn-secondary mt-1 mt-md-0" >Reset</button>
+          <button class="btn btn-secondary mt-1 mt-md-0" onclick="reset()">Reset</button>
           <button class="btn btn-danger mt-1" onclick="removeTodos()">Bin</button>
+          <button class="btn btn-danger mt-1" onclick="sortTodos()">Sort</button>
         </div>
       </div>
     </div>
