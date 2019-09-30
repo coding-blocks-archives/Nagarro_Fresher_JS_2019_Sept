@@ -1,5 +1,5 @@
 # Nagarro Fresher Training
-## JS repo
+## JS repository
 September 2019, Javascript
 
 
