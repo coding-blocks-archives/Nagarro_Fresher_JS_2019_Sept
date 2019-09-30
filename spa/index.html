@@ -1,50 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src = 'https://code.jquery.com/jquery-3.4.1.js'></script>
+    <script src = "script.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="style.css"  />
+    
+    <title>Document</title>
 </head>
-<style>
-  .striked {
-    text-decoration: line-through;
-  }
-  ul > li:hover {
-    cursor: pointer;
-  }
-</style>
 <body>
-  <div class="container mt-5">
-    <div class="row">
-      <div class="col-8 form-group">
-          <input class="form-control" id="newTodo" type="text" placeholder="Today i must...">
-          <small class="form-text text-muted">Add a new todo</small>
-      </div>
-      <div class="col-4">
-        <div class="flex-row justify-content-center align-items-center"> 
-          <button class="btn btn-primary mt-1 mt-md-0" onclick="addTodo()">ADD +</button>
-          <button class="btn btn-secondary mt-1 mt-md-0" >Reset</button>
-          <button class="btn btn-danger mt-1" onclick="removeTodos()">Bin</button>
+    <br>
+
+       <div id = 'containerDiv'>
+           <h1>Your Todos..</h1>
+           <div id = 'newDiv'>
+               <input id = 'newTodo' type = "text" placeholder="What needs to be done?">
+               <input id = 'todoDate' type="date"  >
+               <button id = 'addBtn'> + </button>
+            </div>
+            <br>
+        <div id = 'todoDiv'>
+            <ul id = 'todoList'></ul>
         </div>
-      </div>
-    </div>
-    
-    <div class="row mt-2">
-      <div class="col-10 offset-1">
-          <ul class="list-group">
+        <br>
         
-            </ul>
-      </div>
-      
-    </div>
+        <div id = 'actionsDiv'>
+            <button id = 'allBtn'> All </button>
+            <button id = 'activeBtn'> Active </button>
+            <button id = 'completedBtn'> Done </button> 
+            <button id = 'clearCompletedBtn'>Clear </button>
+            <button id = 'sortBtn'>Sort </button>
+        </div>
+            
+       </div>
     
-
-  </div>
-
-
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="index.js" defer></script>
 </body>
 </html>
