@@ -80,6 +80,19 @@ let todos = [
     inputBox.val('')
   })
 
-  $("ul").sortable();
+  $("ul").sortable({
+    update: function (event, ui) {
+      let updatedIds = $("ul").sortable().toArray();
+      let list= updatedIds[0].children;
+      let updatedlist = [];
+      
+      for (var i = 0; i < list.length; i++) {
+        updatedlist[i] = todos.find(todo => todo.id == list[i].attributes['0'].value)
+      }
+      todos = updatedlist;
+      paint();
+    }
+  });   
+ 
   
   paint();
