@@ -14,23 +14,45 @@
   ul > li:hover {
     cursor: pointer;
   }
+  h2 {
+  background-color: #ffb3b3;
+  
+}
 </style>
 <body>
+  <br>
+  <div  style="padding-left: 80px; padding-right:180px;" >
+     <center> <h2 style="color:#00cc99;" >Todo List</h2></center>
+  </div>
+    
   <div class="container mt-5">
     <div class="row">
+     
       <div class="col-8 form-group">
           <input class="form-control" id="newTodo" type="text" placeholder="Today i must...">
+          <input class="form-control" id="newTodoDate" type="date" placeholder="Date of Todo...">
           <small class="form-text text-muted">Add a new todo</small>
       </div>
       <div class="col-4">
         <div class="flex-row justify-content-center align-items-center"> 
-          <button class="btn btn-primary mt-1 mt-md-0" onclick="addTodo()">ADD +</button>
-          <button class="btn btn-secondary mt-1 mt-md-0" >Reset</button>
-          <button class="btn btn-danger mt-1" onclick="removeTodos()">Bin</button>
+          <button class="btn btn-primary mt-1 mt-md-0" onclick="addTodo()">ADD + </button>
+          <button id="reset" class="btn btn-secondary mt-1 mt-md-0" >Reset ✅</button>
+        </div>
+          <div class="flex-row justify-content-center align-items-center">
+          <button class="btn btn-danger mt-1" onclick="removeTodos()">Bin 🌑</button>
+          <button id="sort" class="btn btn-secondary mt-1 mt-md-0" >Sort 🔄</button>
+         
         </div>
       </div>
     </div>
-    
+    <div class="row mt-2">
+      <div class="col-10 offset-1">
+        <p style="background-color: lightblue;"><b>&nbsp;Tasks</b><span style="float: right ;padding-right:50px;"><b>Deadline&nbsp;</b></span></p>
+
+      </div>
+
+    </div>
+
     <div class="row mt-2">
       <div class="col-10 offset-1">
           <ul class="list-group">
@@ -46,5 +68,6 @@
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="index.js" defer></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
 </body>
 </html>
