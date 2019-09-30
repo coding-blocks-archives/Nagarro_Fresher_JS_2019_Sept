@@ -6,6 +6,11 @@ let todos = [
   },
   {
     id: 2,
+    name: "Attend seminar",
+    done: true
+  },
+  {
+    id: 3,
     name: "Get Coffee",
     done: false
   }
