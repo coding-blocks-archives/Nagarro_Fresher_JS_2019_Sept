@@ -1,6 +1,6 @@
 let todos = [
   ];
-  $('ul').sortable();
+  
   
   function render(state) {
     
@@ -92,5 +92,19 @@ let todos = [
     $('#newTodo').val('')
     $('#newTodoDate').val('')
   })
-  
+ 
+ $("ul").sortable({
+    update: function (event, ui) {
+      var idsInOrder = $("ul").sortable().toArray();
+      let newList = idsInOrder[0].children;
+      let reArrange = [];
+      for (let i = 0; i < newList.length; i++) {
+        reArrange[i] = todos.find(todo => todo.id == newList[i].attributes['0'].value)
+      }
+      todos = reArrange;
+      paint();
+    }
+  }); 
+ 
+
   paint();
