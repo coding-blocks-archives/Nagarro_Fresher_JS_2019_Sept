@@ -1,3 +1,5 @@
+let count = 1
+
 let todos = [
   {
     id: 1,
@@ -18,7 +20,8 @@ function render(state) {
       // li.classList.add("striked")
       // document.body.append(li)
       const classString = todo.done ? `class = "list-group-item striked"` : `class = "list-group-item"`
-      return `<li data-todo="${todo.id}" ${classString}> ${todo.name} </li>`;
+      return `<li data-todo="${todo.id}" ${classString}><a class='up' href='#' onclick="return upFunc()"><img src="upArrow.png"></a> <a class='down' href='#' onclick="return downFunc()"><img src="downArrow.png"></a> &nbsp;${todo.name}</li>`;
+      
     })
     .join("");
 }
@@ -65,3 +68,52 @@ $('#newTodo').on("keypress", function (e) {
 })
 
 paint();
+
+//for up
+function upFunc(){
+  var upLink = document.querySelectorAll(".up");
+
+	for (var i = 0; i < upLink.length; i++) {
+		upLink[i].addEventListener('click', function () {
+			var wrapper = this.parentElement;
+
+			if (wrapper.previousElementSibling)
+			    wrapper.parentNode.insertBefore(wrapper, wrapper.previousElementSibling);
+		});
+  }
+}
+  
+//for down
+function downFunc(){
+  var downLink = document.querySelectorAll(".down");
+
+  for (var i = 0; i < downLink.length; i++) {
+    downLink[i].addEventListener('click', function () {
+      var wrapper = this.parentElement;
+      if (wrapper.nextElementSibling)
+        wrapper.parentNode.insertBefore(wrapper.nextElementSibling, wrapper);
+    });
+  }
+}
+
+function sortList() {
+  var list, i, switching, b, shouldSwitch;
+  list = document.getElementById("list");
+  switching = true;
+  while (switching) {
+    switching = false;
+    b = list.getElementsByTagName("LI");
+    for (i = 0; i < (b.length - 1); i++) {
+      shouldSwitch = false;
+      if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {
+       
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      b[i].parentNode.insertBefore(b[i + 1], b[i]);
+      switching = true;
+    }
+  }
+}
