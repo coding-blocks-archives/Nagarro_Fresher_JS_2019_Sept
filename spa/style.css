@@ -1,0 +1,42 @@
+body {
+background:#cf6a87;
+/* fallback for old browsers */
+
+background: -webkit-linear-gradient(to right, #40407a, #cf6a87);
+/* Chrome 10-25, Safari 5.1-6 */
+
+background: linear-gradient(to right,  #40407a , #cf6a87);
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.error{
+ font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+ color: red;
+}
+
+.container{
+	height: 30%;
+	padding: 10px;
+	margin: 0 auto;
+	margin-top: 40px;
+    background: hsl(300, 12%, 97%);
+	border-radius: 35px;
+}
+
+ul{
+	line-height:100%;
+}
+
+
+li:hover {
+	background-color: yellowgreen;
+	transition: 0.7s;
+	cursor: pointer;
+}
+
+.striked {
+    text-decoration: line-through;
+}
+span{
+	float: right;
+}

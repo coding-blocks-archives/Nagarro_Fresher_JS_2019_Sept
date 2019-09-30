@@ -1,25 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <title>Todo Bootstrap jQuery Demo</title>
+
+  <!-- Css File-->
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<!-- Bootstrap files-->
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<!-- // --->
 </head>
-<style>
-  .striked {
-    text-decoration: line-through;
-  }
-</style>
+
+
 <body>
-  <input id="newTodo" type="text" placeholder="Add new todo">
-  <button onclick="addTodo()"> ADD +</button>
+  
+  <div class="container mt-5" style="width: 600px; height: 500px">
+    
+    <div class="col-xs-9 col-md-12 col-lg-12" align="center">
+      <h1 style="font-family:cursive;">Todo List </h1>
 
-  <ul>
+      <div class="form-group" id="TodoForm">
+        <input id="newTodo" type="text" class="form-control" placeholder="Enter task"> <br/>
+        <input id="deadlineTodo" type="text" class="form-control" placeholder="Enter deadline">
+      </div>
+      <br/>
+      <div class="col-8" id="main-button">
+        <button type="button" class="btn btn-success" onclick="addTodo()"><span class="glyphicon glyphicon-pencil"></span> Add  &nbsp; </button> &nbsp;
+        <button type="button" class="btn btn-primary"  onclick="sortToDo()">  <span class="glyphicon glyphicon-arrow-down"></span> Sort &nbsp;</button>&nbsp;
+        <button type="button" class="btn btn-info" onclick="sortDeadlineToDo()"> <span class="glyphicon glyphicon-arrow-up"></span> Sort-Deadline&nbsp;</button>&nbsp;
+        <button type="button" class="btn btn-warning" onclick="resetToDo()"><span class="glyphicon glyphicon-refresh"></span>Reset&nbsp;</button>&nbsp;
+        <button type="button" class="btn btn-danger" onclick="deleteTodos()"> <span class="glyphicon glyphicon-trash"></span> Bin&nbsp;</button>
+      </div>
+<br/>
+<div class="panel panel-primary">
+    <div class="panel-heading"> <b>Upcoming ToDo Task <span>Deadline </t></span> </b></div>
+  </div>
+      <div>
+        
+        <ul class="list-group">
+       
+        </ul>
+      </div>
 
-  </ul>
+    </div>
 
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="index.js" defer></script>
+  </div>
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+  <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <script defer src="index.js"></script>
+<!-- step 5 -->
 </html>
