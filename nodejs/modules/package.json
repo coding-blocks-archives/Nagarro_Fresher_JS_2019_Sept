@@ -1,0 +1,14 @@
+{
+  "name": "modules",
+  "version": "1.0.0",
+  "description": "A new node project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "repeat-string": "^1.6.1"
+  }
+}
