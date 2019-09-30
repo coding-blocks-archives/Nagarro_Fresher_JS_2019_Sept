@@ -40,7 +40,19 @@ function removeTodos() {
   paint()
 }
 
-$('ul').sortable();
+$("ul").sortable({
+      update: function (event, ui) {
+        let temp = [];
+        var idsInOrder = $("ul").sortable().toArray();
+    
+        children = idsInOrder[0].children;
+        for (var i = 0; i < children.length; i++) {
+          temp[i] = todos.find(todo => todo.id == children[i].attributes['0'].value)
+        }
+        todos = temp;
+        paint();
+      }
+})
 // action for changing todo list item to strike through
 $('ul').on("click", function (e) {
 
