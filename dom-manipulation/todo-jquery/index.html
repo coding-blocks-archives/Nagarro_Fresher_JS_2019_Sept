@@ -1,18 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-  <script defer src="script.js"></script>
-</head>
+  <head>
+
+    <meta charset="UTF-8">
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+    <title>Document</title>
+  
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+   <script src="script.js" defer></script>
+  
+  </head>
 <body>
   <h1>Todo List</h1>
   <input type="text" id="newtask">
+  <input type="datetime" id="deadline">
   <button id="addtask">Add</button>
+  <button class="btn btn-danger mt-1" onclick="sortTodos()">SortByDeadlines</button>
   <ul id="tasklist"></ul>
+
 
 
 </body>
