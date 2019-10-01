@@ -72,10 +72,16 @@ li:hover .lastDate {
     display: none;
 }
 
+#completedBtn:hover {
+    background: #ddd !important;;
+}
+#allBtn:hover {
+    background: #ddd !important;
+}
+#activeBtn:hover{
+    background:  #ddd !important;;
+}
 #allBtn, #activeBtn, #completedBtn {
-    /* font-size: 15px;
-    padding: 10px;
-    float: left; */
 
     cursor: pointer;
     background-color: #eee;
@@ -83,20 +89,12 @@ li:hover .lastDate {
     padding: 15px;
     text-align: center;
     font-size: 16px;
-    margin: 4px 6px;
+    margin: 4px 5px;
     border-radius: 12px;
 }
 
-#completedBtn:hover {
-    background: #ddd;
-}
-#allBtn:hover {
-    background: #ddd;
-}
-#activeBtn:hover{
-    background:  #ddd;
-}
-#clearCompletedBtn, #sortBtn {
+
+#clearCompletedBtn, #sortBtn, #resetBtn {
     /* font-size: 15px;
     padding: 10px;
      */
@@ -107,7 +105,7 @@ li:hover .lastDate {
      padding: 15px;
      text-align: center;
      font-size: 16px;
-     margin: 4px 6px;
+     margin: 4px 5px;
      border-radius: 12px;
 }
 #clearCompletedBtn {
@@ -124,6 +122,13 @@ li:hover .lastDate {
     background: blue;
 }
 
+#resetBtn {
+    background-color: #feca1dba
+
+}
+#resetBtn:hover {
+    background:      #feca1d;
+}
 input[type=text]:focus {
     border: 2px solid #555;
 }
@@ -144,13 +149,14 @@ input[type=text]:focus {
   background-color: #008000b8;
   border: none;
   color: white;
-  padding: 13px;
+  padding: 14px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 18px;
   border-radius: 50%;
   float: right;
+  
 }
 
 #addBtn:hover {

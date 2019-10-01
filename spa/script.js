@@ -7,7 +7,9 @@ const activeBtn = $('#activeBtn');
 const completedBtn = $('#completedBtn');
 const clearCompletedBtn = $('#clearCompletedBtn');
 const sortBtn = $('#sortBtn');
+const resetBtn = $('#resetBtn');
 const actionsDiv = $('#actionsDiv');
+
 let allTodos = [];
 let activeTodos = [];
 let completedTodos = [];
@@ -60,16 +62,25 @@ const displayTodos = (todos) => {
 
 const displayAllTodos = () => {
     displayTodos(allTodos);
+    allBtn.attr('style','background : #ddd');
+    activeBtn.attr('style','background : #eee');
+    completedBtn.attr('style','background : #eee');
 }
 
 const displayCompletedTodos = () => {
     completedTodos = allTodos.filter(todo => todo.done);
     displayTodos(completedTodos);
+    allBtn.attr('style','background : #eee');
+    activeBtn.attr('style','background : #eee');
+    completedBtn.attr('style','background : #ddd');
 }
 
 const displayActiveTodos = () => {
     activeTodos = allTodos.filter(todo => !todo.done);
     displayTodos(activeTodos);
+    allBtn.attr('style','background : #eee');
+    activeBtn.attr('style','background : #ddd');
+    completedBtn.attr('style','background : #eee');
 }
 
 const renderTodo = (targetTodoElement, targetId) => {
@@ -135,22 +146,16 @@ const moveTodoDown = (targetTodoElement, targetId) => {
 addBtn.on("click", addTodo);
 
 newTodo.on("keypress", (e) => {
-    if(e.which == 13){
-        
+    if(e.which == 13){  
         addTodo();
     }
   });
 
 todoDate.on("keypress", (e) => {
-    if(e.which == 13){
-       
+    if(e.which == 13){ 
         addTodo();
     }
   });  
-
-newTodo.on("click", (e) => {
-    
-  });
 
 
 todoList.on("click", (e) => {
@@ -171,9 +176,15 @@ todoList.on("click", (e) => {
     
 })
 
+const resetTodos = () => {
+    allTodos = [];
+    displayAllTodos();
+    actionsDiv.hide();
+}
 
 allBtn.on('click', displayAllTodos);
 activeBtn.on('click', displayActiveTodos);
 completedBtn.on('click', displayCompletedTodos);
 clearCompletedBtn.on('click', clearCompletedTodos);
 sortBtn.on('click', sortTodos);
+resetBtn.on('click', resetTodos);
