@@ -1,8 +1,32 @@
 const fs = require('fs')
 
-const contents = fs.readFile(__dirname + '/numbers.txt', 'utf-8', function (err, result) {
-  console.log(result)
+function readFile(filename, done) {
+  fs.readFile(__dirname + '/' + filename, 'utf-8', (err, data) => {
+    done(data)
+  })
+}
+
+function writeFile(filename, data, done) {
+  fs.writeFile(__dirname + '/' + filename, data, (err, results) => done())
+}
+
+function performOps(data) {
+  return data.split('\n').reduce((acc, el) => acc + +el, 0)
+}
+
+readFile('numbers.txt', data => {
+  const dataToWrite = performOps(data)
+  writeFile('result.txt', dataToWrite, () => {
+    console.log("Done")
+  })
 })
 
 
-console.log(contents.split('\n'))
+//  Homework: Covert to promises
+
+// readFile('numbers.txt').then(data => {
+//   const dataToWrite = performOps(data)
+//   return writeFile('result.txt', dataToWrite)
+// }).then(() => {
+//   console.log("Done")
+// })
