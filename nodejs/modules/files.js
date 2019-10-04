@@ -25,3 +25,13 @@ readFile("numbers.txt", (err, result) => {
     console.log("Done Saved Sum:"+sum )
   })
 })
+
+
+//  Homework: Covert to promises
+
+// readFile('numbers.txt').then(data => {
+//   const dataToWrite = performOps(data)
+//   return writeFile('result.txt', dataToWrite)
+// }).then(() => {
+//   console.log("Done")
+// })
