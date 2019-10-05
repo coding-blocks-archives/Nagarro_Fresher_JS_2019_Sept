@@ -59,8 +59,12 @@ module.exports = {
     authUser: function(req, res, username, password){
         mysqlConnection.query("SELECT * FROM USER WHERE USERNAME = ? AND UPASSWORD = ?",[username, password], (err,rows, field) => {
             if(!err){
-                req.session.user = username;
-                this.getBands(req, res);
+                if(rows.length!=0){
+                    req.session.user = username;
+                    this.getBands(req, res);
+                }
+                else
+                    console.log("no user exist :(");                
             }
             else{
                 console.log(err);
