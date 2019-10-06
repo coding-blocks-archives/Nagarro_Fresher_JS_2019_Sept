@@ -1,50 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <style>
-  .striked {
-    text-decoration: line-through;
-  }
-  ul > li:hover {
-    cursor: pointer;
-  }
+    #reset,#bin,#addTask,#sort,#sortbyItems{
+        font-size:20px; 
+    }
+    
+    .striked{
+        text-decoration:line-through;
+    }
+    li{
+        list-style-type: none
+    }
+    #delete{
+        float: right;
+        height:30px;
+        width:40px;
+        color:red;
+    }
+    li:hover{
+        color:tomato;
+        background-image:linear-gradient(gray,white)
+    }
 </style>
+</head>
 <body>
-  <div class="container mt-5">
-    <div class="row">
-      <div class="col-8 form-group">
-          <input class="form-control" id="newTodo" type="text" placeholder="Today i must...">
-          <small class="form-text text-muted">Add a new todo</small>
-      </div>
-      <div class="col-4">
-        <div class="flex-row justify-content-center align-items-center"> 
-          <button class="btn btn-primary mt-1 mt-md-0" onclick="addTodo()">ADD +</button>
-          <button class="btn btn-secondary mt-1 mt-md-0" >Reset</button>
-          <button class="btn btn-danger mt-1" onclick="removeTodos()">Bin</button>
-        </div>
-      </div>
-    </div>
-    
-    <div class="row mt-2">
-      <div class="col-10 offset-1">
-          <ul class="list-group">
+    <div class= "container">
         
-            </ul>
-      </div>
-      
-    </div>
-    
-
-  </div>
-
-
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="index.js" defer></script>
+        <div class = "row">
+             <div class = "col-12 ">
+                <input class="mt-4 ml-0 rounded" style="width:80%" id="newTask" type="text" placeholder="Please enter task" >
+                
+            </div>
+        </div>
+        
+        <div class = "row">
+            <div id="inputCalender" class = "col-12">
+                <input class="mt-4  ml-1 rounded" style="width:80%" id="deadline" type="date" placeholder="Please add deadline"  >
+                <small class="form-text text-muted">Add a deadline</small>
+            </div> 
+        </div>
+        
+        <div class="row">
+            <div class = "col-12 mt-4 ml-0">
+                <button id= "addTask" class = "btn btn-primary mt-1"><i class="fas fa-plus"> Add</i></button>
+                <button id= "bin" class = "btn btn-danger mt-1"><strong><i class="far fa-popcorn"> Bin</i></strong></button>
+                <button id= "reset" class = "btn btn-secondary mt-1"><i class="fas fa-clock"> Reset</i></button>        
+                <button id= "sort" class = "btn btn-success mt-1"><i class="fas fa-clock"> Sort by deadline</i></button>
+                <button id= "sortbyItems" class = "btn btn-success mt-1"><i class="fas fa-sort"> Sort By Done/Undone</i></button>        
+            </div>
+        </div>   
+        
+        <div class="row mt-4">
+            <div class="col-10 offset-1">
+                <ul id ="taskList"></ul>
+            </div>
+        </div>
+    </div>  
+<script defer src="script.js"></script>
 </body>
 </html>
