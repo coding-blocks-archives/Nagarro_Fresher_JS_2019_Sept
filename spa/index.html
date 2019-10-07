@@ -8,25 +8,101 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <style>
+  h3 {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 35px;
+	background-color: #ff9933;
+	color: white;
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+		rgba(0, 0, 0, 0.19);
+	padding: 10px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	margin: 4px 2px;
+	border-radius: 12px;
+}
   .striked {
     text-decoration: line-through;
   }
   ul > li:hover {
     cursor: pointer;
   }
+
+.alert1 {
+  padding: 20px;
+  background-color: #66a3ff;
+  color: white;
+  width : 400px;
+  font-family:Verdana;
+}
+
+.alert {
+  padding: 20px;
+  width : 400px;
+  background-color: #f44336;
+  color: white;
+  
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  
+}
+.closebtn:hover {
+  color: black;
+ } 
+  
+  .button {
+  background-color: #0099ff; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-size:25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  border-radius: 12px;
+  
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+.button1 {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+  
+</style>
 </style>
 <body>
+  <div align="center">
+    <h3>
+        Todo List
+    </h3>
+  </div>
   <div class="container mt-5">
+
     <div class="row">
       <div class="col-8 form-group">
           <input class="form-control" id="newTodo" type="text" placeholder="Today i must...">
+          <input type="date" name="bday" id="datetime">
           <small class="form-text text-muted">Add a new todo</small>
       </div>
       <div class="col-4">
         <div class="flex-row justify-content-center align-items-center"> 
           <button class="btn btn-primary mt-1 mt-md-0" onclick="addTodo()">ADD +</button>
-          <button class="btn btn-secondary mt-1 mt-md-0" >Reset</button>
+          <button id="reset" class="btn btn-secondary mt-1 mt-md-0" >Reset</button>
           <button class="btn btn-danger mt-1" onclick="removeTodos()">Bin</button>
+          <button id="sort" class="btn btn-danger mt-1" >Sorting</button>
         </div>
       </div>
     </div>
@@ -39,12 +115,8 @@
       </div>
       
     </div>
-    
-
   </div>
-
-
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="index.js" defer></script>
+  <script src="to_list.js" defer></script>
 </body>
 </html>
