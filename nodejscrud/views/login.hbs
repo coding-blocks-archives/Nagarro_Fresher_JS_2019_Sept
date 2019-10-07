@@ -18,16 +18,21 @@
             <div class="col-sm-6">
                 <div class="container">
                     <h2>Login</h2>
+                    {{#if loginFailureStatus}}
+                    <div class="alert alert-danger">
+                        <strong>Sorry!</strong> {{loginFailureStatus}}
+                    </div>
+                    {{/if}}
                     <form action="/login" method="post">
                         <div class="form-group">
                             <label for="username">Username:</label>
                             <input type="text" class="form-control" id="username" placeholder="Enter username"
-                                name="username">
+                                name="username" required>
                         </div>
                         <div class="form-group">
                             <label for="pwd">Password:</label>
                             <input type="password" class="form-control" id="password" placeholder="Enter password"
-                                name="password">
+                                name="password" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
@@ -36,16 +41,26 @@
             <div class="col-sm-6" style="border-left: 1px solid black">
                 <div class="container">
                     <h2>Signup</h2>
+                    {{#if signupSuccessStatus}}
+                    <div class="alert alert-success">
+                        <strong>Success!</strong> {{signupSuccessStatus}}
+                    </div>
+                    {{/if}}
+                    {{#if signupFailureStatus}}
+                    <div class="alert alert-danger">
+                        <strong>Sorry!</strong> {{signupFailureStatus}}
+                    </div>
+                    {{/if}}
                     <form action="/signup" method="post">
                         <div class="form-group">
                             <label for="username">Username:</label>
                             <input type="text" class="form-control" id="username" placeholder="Enter username"
-                                name="username">
+                                name="username" required>
                         </div>
                         <div class="form-group">
                             <label for="pwd">Password:</label>
                             <input type="password" class="form-control" id="password" placeholder="Enter password"
-                                name="password">
+                                name="password" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
@@ -53,6 +68,13 @@
             </div>
         </div>
     </div>
+    <script>
+        window.setTimeout(function () {
+            $(".alert").fadeTo(500, 0).slideUp(500, function () {
+                $(this).remove();
+            });
+        }, 4000);
+    </script>
 </body>
 
 </html>

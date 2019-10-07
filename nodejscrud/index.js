@@ -57,7 +57,11 @@ app.get("/login", (req, res) => {
     if (req.session.user) {
         res.redirect("/");
     } else {
-        res.render("login");
+        res.render("login", {
+            signupSuccessStatus: req.session.SighnupSuccessStatus,
+            signupFailureStatus: req.session.SighnupFailureStatus,
+            loginFailureStatus: req.session.LoginFailureStatus
+        });
     }
 });
 

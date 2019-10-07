@@ -28,7 +28,7 @@ module.exports = {
     },
 
     updateBands: function(req, res, bandname, description, number_of_members, id){
-        mysqlConnection.query("UPDATE BAND SET BANDNAME = ?, DESCRIPTION = ?, NUMBER_OF_MEMBERS = ? WHERE ID = ?", [bandname, description, number_of_members, id], (err, rows, field) => {
+        mysqlConnection.query("UPDATE BAND SET BANDNAME = ?, DESCRIPTION = ?, NUMBER_OF_MEMBERS = ? WHERE ID = ? AND USERID = ?", [bandname, description, number_of_members, id, req.session.userid], (err, rows, field) => {
             if (!err) {
                 this.getBands(req, res);
             }
@@ -39,7 +39,7 @@ module.exports = {
     },
 
     deleteBands: function(req, res, id){
-        mysqlConnection.query("DELETE FROM BAND WHERE ID = ?", [id], (err, field) => {
+        mysqlConnection.query("DELETE FROM BAND WHERE ID = ? AND USERID = ?", [id, req.session.userid], (err, field) => {
             if (!err)
                 this.getBands(req, res);
             else
@@ -61,26 +61,31 @@ module.exports = {
             if(!err){
                 if(rows.length!=0){
                     req.session.user = username;
+                    req.session.userid = rows[0].id;
                     this.getBands(req, res);
                 }
                 else
-                    console.log("no user exist :(");                
+                req.session.LoginFailureStatus = "No User exist :(";               
             }
             else{
-                console.log(err);
+                req.session.LoginFailureStatus = err;
             }
+            req.session.SighnupSuccessStatus = '';
+            req.session.SighnupFailureStatus = '';
+            res.redirect("/");
         });  
     },
 
     addUser: function(req, res, username, password){
         mysqlConnection.query("INSERT INTO USER (USERNAME, UPASSWORD) VALUES( ?, ?)",[username, password], (err, field) => {
             if(!err){
-                req.session.user = username;
-                this.getBands(req, res);
+                req.session.SighnupSuccessStatus = "Account Create Successfully";   
             }
             else{
-                console.log(err);
+                req.session.SighnupFailureStatus = err.sqlMessage;
             }
+            req.session.LoginFailureStatus = '';
+            res.redirect("/");
         });  
     },
 
