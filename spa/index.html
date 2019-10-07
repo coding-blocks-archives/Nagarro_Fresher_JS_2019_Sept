@@ -1,50 +1,83 @@
-<!DOCTYPE html>
-<html lang="en">
+   
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
+<title>To Do list</title>
+<link rel="stylesheet" href="ex.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="JqueryUi/jquery-ui.css">
+<link rel="stylesheet" href="JqueryUi/jquery-ui.structure.css">
+<link rel="stylesheet" href="JqueryUi/jquery-ui.theme.css">
 <style>
-  .striked {
-    text-decoration: line-through;
-  }
-  ul > li:hover {
-    cursor: pointer;
-  }
-</style>
+  .items ul{
+    list-style: none;
+    text-align:left;
+    font-size:25px;
+    background-color: #f0f8ff;
+    margin-left:300px;
+    margin-right: 300px;
+    border: 2px solid #ccc;
+    
+}
+li{
+ 
+    padding: 10px 20px;
+    border-bottom: 1px solid #ccc;
+ 
+}
+#delete{
+    float: right;
+}
+body{
+    background-color:lightgreen;
+}
+
+input{
+    width: 250px;
+    height: 30px;
+    font-size:25px;
+}
+.container{
+    margin: 100px;
+    text-align: center;
+}
+button{
+    font-size: 22px;
+    background-color: orangered;
+    border-radius: 6px;
+}
+  </style>
+</head>
 <body>
-  <div class="container mt-5">
-    <div class="row">
-      <div class="col-8 form-group">
-          <input class="form-control" id="newTodo" type="text" placeholder="Today i must...">
-          <small class="form-text text-muted">Add a new todo</small>
-      </div>
-      <div class="col-4">
-        <div class="flex-row justify-content-center align-items-center"> 
-          <button class="btn btn-primary mt-1 mt-md-0" onclick="addTodo()">ADD +</button>
-          <button class="btn btn-secondary mt-1 mt-md-0" >Reset</button>
-          <button class="btn btn-danger mt-1" onclick="removeTodos()">Bin</button>
-        </div>
-      </div>
-    </div>
     
-    <div class="row mt-2">
-      <div class="col-10 offset-1">
-          <ul class="list-group">
-        
-            </ul>
-      </div>
-      
-    </div>
-    
-
-  </div>
-
-
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="index.js" defer></script>
+<div class="container">
+    <h2>TODO List</h2>
+    <input id="item" type="text" placeholder="Add a new task">
+    <input id="item1" type="text" placeholder="Add Task date">
+    <button id="btn1">ADD</button>
+</div>
+<div class="items">
+    <ul id="list">
+       
+    </ul>
+</div>
 </body>
-</html>
+<script src="jQuery/jquery.js"></script>
+<script src="JqueryUi/jquery-ui.js"></script>
+<script>
+    $("#item1").datepicker();
+    $("#btn1").click(function(){
+        var item=$("#item").val();
+        var item1=$("#item1").val();
+        $("#list").append('<li><span id="check"><i class="fa fa-circle-thin"></span></i>'+" "+item +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+item1+'<span id="delete"><i class="fa fa-trash-o fa_custom"></span></i></li>');
+        $("#list").sortable();
+    })
+
+    $("#list").on('click',"#delete",function(){
+        $(this).parent().fadeOut();
+    })
+    $("#list").on('click',"#check",function(){
+        $(this).parent().wrap("<strike>")
+        $(this).find('i').toggleClass(' fa fa-circle-thin fa fa-check-circle')
+    })
+</script>
+</html> 
