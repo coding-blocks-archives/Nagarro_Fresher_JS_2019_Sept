@@ -1,0 +1,5 @@
+- cd to `db/`s directory
+- Login/Logout Works with redirects
+- Add Bands List on frontend for /
+- Functionality to remove bands from list 
+- Bonus: Customized UI for login/logout
