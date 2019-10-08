@@ -1,0 +1,206 @@
+{
+	"info": {
+		"_postman_id": "deb5138c-979e-40b3-8904-9a237a7ab670",
+		"name": "Band API's NodeJS Ending Assignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Band",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "VjFaa01HV2hTYWtFOQ==",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "V1ZjeFIyTkhTbTVRVkRBOQ==",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"bandName\" : \"Band By Api\",\n\t\"bandDesc\" : \"Band Description\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/createband/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"createband",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Band",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "VjFaa01HVnRSa2hTYWtFOQ==",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "V1ZjeFIyTkhTbTVRVkRBOQ==",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"bandName\" : \"Jain Band Update By Api\",\n\t\"bandDesc\" : \"Jain Band Update Description\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/updateband/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"updateband",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Band",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "VjFaa01HVnRSa2hTYWtFOQ==",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "V1ZjeFIyTkhTbTVRVkRBOQ==",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/deleteband/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"deleteband",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Single Band",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "VjFaa01HVnRSa2hTYWtFOQ==",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/band/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"band",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Bands",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "VjFaa01HVnRSa2hTYWtFOQ==",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "V1ZjeFIyTkhTbTVRVkRBOQ==",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/band/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"band",
+						""
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

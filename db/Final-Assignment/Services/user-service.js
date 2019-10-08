@@ -1,3 +1,6 @@
+/**
+ * @author : akshatjain
+ */
 //Get the User info...
 
 function getUser(User, username, callback) {

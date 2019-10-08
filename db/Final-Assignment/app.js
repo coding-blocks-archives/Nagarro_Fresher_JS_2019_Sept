@@ -1,3 +1,16 @@
+/**
+ * @author : akshatjain
+ * 
+ * Created At : 05-October-2019
+ * Last Modified At : 08-October-2019
+ * 
+ * See Documentation : @github
+ * Architecture : MVC
+ * Description : This is the major Configuration file 
+ *               all the configurations related this app
+ *               is in this file edit it carefully.
+ */
+
 var express = require("express")
 var path = require("path")
 var bodyParser = require("body-parser")
@@ -34,7 +47,12 @@ app.use(
         cookie: {
             secure: false
         },
-        store: new redisStore({ host: dbConfig.internal.url, port: 6379, client: redisClient, ttl: 86400 })
+        store: new redisStore({
+            host: dbConfig.internal.url,
+            port: 6379,
+            client: redisClient,
+            ttl: 86400
+        })
     })
 )
 

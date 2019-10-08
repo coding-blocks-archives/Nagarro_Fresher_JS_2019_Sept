@@ -1,5 +1,7 @@
+/**
+ * @author : akshatjain
+ */
 var express = require("express")
-var bandService = require("../Services/band-service")
 var userService = require("../Services/user-service")
 var encryption = require("../Services/encryption")
 

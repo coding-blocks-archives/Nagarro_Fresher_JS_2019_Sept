@@ -1,3 +1,6 @@
+/**
+ * @author : akshatjain
+ */
 var Sequelize = require("sequelize")
 
 var BandModel = require("../Models/Band")

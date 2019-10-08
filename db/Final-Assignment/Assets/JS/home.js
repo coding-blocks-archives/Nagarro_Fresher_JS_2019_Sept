@@ -1,4 +1,8 @@
-//CU Form Instance
+/**
+ * @author : akshatjain
+ */
+
+ //CU Form Instance
 const cuForm = $("#cu-form")
 const baseBEURL = '/api/'
 var selectedID = 0
