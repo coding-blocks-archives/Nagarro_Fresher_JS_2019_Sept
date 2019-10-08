@@ -1,67 +1,54 @@
-let todos = [
-  {
-    id: 1,
-    name: "Teach Class at Nagarro",
-    done: true
-  },
-  {
-    id: 2,
-    name: "Get Coffee",
-    done: false
+var myNodelist = document.getElementsByTagName("LI");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
+}
+// Click on a close button to hide the current list item
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+  var div = this.parentElement;
+  div.style.display = "none";
   }
-];
-
-function render(state) {
-  return state
-    .map(todo => {
-      // const li = document.createElement('li')
-      // li.classList.add("striked")
-      // document.body.append(li)
-      const classString = todo.done ? `class = "list-group-item striked"` : `class = "list-group-item"`
-      return `<li data-todo="${todo.id}" ${classString}> ${todo.name} </li>`;
-    })
-    .join("");
 }
-
-function paint() {
-  $("ul").html(render(todos));
-}
-
-function addTodo() {
-  // document.getElementById('newTodo') != $('#newTodo')
-  const inputBox = $('#newTodo')
-  todos.push({
-    id: todos.length + 1,
-    name: inputBox.val(),
-    done: false
-  })
-
-  inputBox.val('')
-
-  paint()
-}
-
-
-
-function removeTodos() {
-  todos = todos.filter(todo => !todo.done)
-
-  paint()
-}
-
-
-$('ul').on("click", function (e) {
-  const idToFind = e.target.dataset.todo
-  const todo = todos.find(todo => todo.id == idToFind)
-  todo.done = !todo.done
-
-  paint()
-})
-
-$('#newTodo').on("keypress", function (e) {
-  if (e.which == 13) {
-    addTodo()
+// Add a "checked" symbol when clicking on a list item
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+  ev.target.classList.toggle('checked');
   }
-})
-
-paint();
+}, false);
+// Create a new list item when clicking on the "Add" button
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+  alert("You must write something!");
+  } else {
+    document.getElementById("myUL").appendChild(li);
+  }
+  document.getElementById("myInput").value = "";
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+        var div = this.parentElement;
+        div.style.display = "none";
+    }
+  }
+}
+//Clearing the list
+function removeAll(){
+  var lst = document.getElementsByTagName("ul");
+    lst[0].innerHTML = "";
+}
