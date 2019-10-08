@@ -1,50 +1,132 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-<style>
-  .striked {
+<html>
+  <head>
+    <style type="text/css">
+    body {
+    margin: 10px auto;
+    min-width: 250px;
+    max-width: 50%;
+    background-color: silver;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+  ul li {
+    cursor: pointer;
+    position: relative;
+    padding: 12px 8px 12px 40px;
+    list-style-type: none;
+    background: #eee;
+    font-size: 18px;
+    transition: 0.2s;
+    /* make the list items unselectable */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  /* Set zebra-stripes: all odd list items to a different color */
+  ul li:nth-child(odd) {
+  background: #f9f9f9;
+  }
+  ul li:hover {
+    background: #ddd;
+  }
+  ul li.checked {
+    background: teal;
+    color: white;
     text-decoration: line-through;
   }
-  ul > li:hover {
-    cursor: pointer;
+  ul li.checked::before {
+    content: '';
+    position: absolute;
+    border-color: #fff;
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    top: 10px;
+    left: 16px;
+    transform: rotate(45deg);
+    height: 15px;
+    width: 7px;
   }
-</style>
-<body>
-  <div class="container mt-5">
-    <div class="row">
-      <div class="col-8 form-group">
-          <input class="form-control" id="newTodo" type="text" placeholder="Today i must...">
-          <small class="form-text text-muted">Add a new todo</small>
-      </div>
-      <div class="col-4">
-        <div class="flex-row justify-content-center align-items-center"> 
-          <button class="btn btn-primary mt-1 mt-md-0" onclick="addTodo()">ADD +</button>
-          <button class="btn btn-secondary mt-1 mt-md-0" >Reset</button>
-          <button class="btn btn-danger mt-1" onclick="removeTodos()">Bin</button>
-        </div>
-      </div>
+  /* Style the close button */
+  .close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 12px 16px 12px 16px;
+  }
+  .close:hover {
+    background-color: crimson;
+    color: white;
+  }
+  .header {
+    background-color: crimson;
+    padding: 30px 40px;
+    color: white;
+    text-align: center;
+  }
+  .header:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  input {
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    width: 75%;
+    padding: 10px;
+    float: left;
+    font-size: 16px;
+  }
+  .addBtn {
+    padding: 10px;
+    width: 25%;
+    background: #d9d9d9;
+    color: #555;
+    float: left;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 0;
+  }
+  .addBtn:hover {
+    background-color: #bbb;
+  }
+  #clear-list{
+    width: 30%;
+    font-weight: bold;
+    font-style: italic;
+    font-size: xx-large;
+    font-family: "Times New Roman";
+    margin: 40px 35%;
+    background-color: darkblue;
+    color: white;
+  }
+  #clear-list:hover{
+    background-color: blue;
+    color: white;
+  }
+   </style>
+  </head>
+  <body>
+    <div class="header">
+      <h2 style="margin:5px">AMANVEER's  To Do List</h2>
+      <input type="text" id="myInput" placeholder="Add the Todo...">
+      <span onclick="newElement()" class="addBtn">Add</span>
     </div>
-    
-    <div class="row mt-2">
-      <div class="col-10 offset-1">
-          <ul class="list-group">
-        
-            </ul>
-      </div>
-      
-    </div>
-    
-
-  </div>
-
-
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="index.js" defer></script>
-</body>
+    <ul id="myUL">
+      <li class="checked">Wake Up at 6 am</li>
+      <li>Have Breakfast </li>
+      <li class="checked">Leave for Work</li>
+    </ul>
+    <button type="button" id="clear-list" onclick="removeAll()">Clear All Items</button>
+    <script type="text/javascript" src="index.js"></script>
+  </body>
 </html>
