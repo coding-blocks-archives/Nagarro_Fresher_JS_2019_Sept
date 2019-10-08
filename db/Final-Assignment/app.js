@@ -62,27 +62,27 @@ const port = 3000
 DB.connectToDB(dbConfig).then((dataSets) => {
         console.log(`Database Synced And is Connected!`)
         //Hit API URL's Only When The the DataBase is Connected...
-        enableAPI(dataSets)
+        enableAPI(dataSets.Band)
+        enableFE(dataSets.User)
+        enable404()
     })
     .catch((err) => console.log(err))
 
 //Enable Band API with DataSets...
-function enableAPI(dataSets) {
+function enableAPI(BandsDataSet) {
     //Enable API Support for CRUD Operations...
     const bandApi = require("./Controllers/band-api")
-    bandApi.setDataset(dataSets.Band, (router) => {
+    bandApi.setDataset(BandsDataSet, (router) => {
         app.use('/api', router)
-        enableFE(dataSets)
     })
 }
 
 //Enable User FrontEnd UI from DataSets...
-function enableFE(dataSets) {
+function enableFE(UserDataSet) {
     //Enable Front-End Executin for the User Interface:
     const userUI = require("./Controllers/user-FE")
-    userUI.setDataSet(dataSets, router => {
+    userUI.setDataSet(UserDataSet, router => {
         app.use('/', router)
-        enable404()
     })
 }
 

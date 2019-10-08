@@ -75,7 +75,7 @@ cuForm.submit((e) => {
                 'Authorization': getAuthToken()
             },
             success: (response) => {
-                location.reload()
+                fetchBands()
             },
             error: (err) => {
                 alert(err.responseJSON.error)
@@ -95,7 +95,7 @@ function deleteBand(id) {
                 'Authorization': getAuthToken()
             },
             success: (response) => {
-                location.reload()
+                fetchBands()
             },
             error: (err) => {
                 alert(err.responseJSON.error)
@@ -104,6 +104,76 @@ function deleteBand(id) {
         })
     }
 }
+
+fetchBands()
+
+//Fetch Tables From BE...
+function fetchBands() {
+    $.ajax({
+        type: "GET",
+        url: baseBEURL + "band/",
+        headers: {
+            'Authorization': getAuthToken()
+        },
+        success: function (response) {
+            var jObj = JSON.parse(JSON.stringify(response))
+            printTable(jObj)
+        },
+        error: (err) => {
+            alert(err.responseJSON.error)
+            location.reload()
+        }
+    })
+    $(".modal").modal('hide')
+}
+
+function printTable(bands) {
+    var tableToApend = ''
+    let i = 1;
+    $('#bands-tbl').html('')
+    bands.forEach(band => {
+        tableToApend = createTableRow(i++, band.bandName, band.bandDesc, band.bandID)
+        $('#bands-tbl').append(tableToApend)
+    })
+}
+
+function createTableRow(sno, bandName, bandDesc, bandID) {
+    return $("<tr>")
+        .addClass("table-light")
+        .append(
+            $("<th>")
+            .text(sno)
+        )
+        .append(
+            $("<td>")
+            .text(bandName)
+        )
+        .append(
+            $("<td>")
+            .text(bandDesc)
+        )
+        .append(
+            createEditDelBtns(bandID)
+        )
+}
+
+function createEditDelBtns(bandID) {
+    return $("<td>")
+        .append(
+            $('<img>')
+            .attr('onclick', `editBand(${bandID})`)
+            .attr('src', '/img/edit-icon.png')
+        )
+        .append(
+            $('<img>')
+            .attr('onclick', `deleteBand(${bandID})`)
+            .attr('style', 'margin-left: 0.7em')
+            .attr('src', '/img/delete-icon.png')
+
+        )
+
+}
+
 
 function getAuthToken() {
     let auth_jwt = decodeURIComponent(getCookie("username_jwt"))

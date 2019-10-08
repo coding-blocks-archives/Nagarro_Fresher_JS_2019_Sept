@@ -57,23 +57,7 @@
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <% 
-                    var i=1
-                    band.list.forEach((b) =>{
-                        let editVal = "editBand("+b.bandID+")";
-                        let delVal = "deleteBand("+b.bandID+")";
-                    %>
-                    <tr class="table-light">
-                        <th scope="row"><%= i++%></th>
-                        <td id="name"><%= b.bandName%></td>
-                        <td id="desc"><%= b.bandDesc%></td>
-                        <td><img onclick=<%= editVal %> src="/img/edit-icon.png"><img onclick=<%= delVal%>
-                                style="margin-left: 0.7em;" src="/img/delete-icon.png"></td>
-                    </tr>
-                    <%
-                })
-                    %>
+                <tbody id="bands-tbl">
                 </tbody>
             </table>
         </div>

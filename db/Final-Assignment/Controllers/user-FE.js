@@ -47,21 +47,16 @@ router.get('/logout', (req, res) => {
     res.redirect("/login")
 })
 
-function datasetAPIs(dataSet) {
-    //User Dashboard...
-    router.get('/dashboard', loggedInOnly(), (req, res) => {
-        username = req.session.user.username
-        res.cookie('username_jwt', getEncodedUser(username))
-        listv = bandService.getAllBands(dataSet.Band, username, bands => {
-            res.render('dashboard', {
-                username: username,
-                band: {
-                    list: bands
-                }
-            })
-        })
+//User Dashboard...
+router.get('/dashboard', loggedInOnly(), (req, res) => {
+    username = req.session.user.username
+    res.cookie('username_jwt', getEncodedUser(username))
+    res.render('dashboard', {
+        username: username
     })
+})
 
+function datasetAPIs(UserDataSet) {
     //Login User Post Method...
     router.post('/login', (req, res) => {
         let {
@@ -71,7 +66,7 @@ function datasetAPIs(dataSet) {
 
         validateLengths(username, password, 'login', res)
 
-        signInUser(dataSet, username, password, req, res)
+        signInUser(UserDataSet, username, password, req, res)
     })
 
     //Register/Signup User...
@@ -92,12 +87,12 @@ function datasetAPIs(dataSet) {
             username,
             password
         }
-        signupUser(dataSet.User, user, req, res)
+        signupUser(UserDataSet, user, req, res)
     })
 }
 
-function signInUser(dataSet, username, password, req, res) {
-    userService.getUser(dataSet.User, username, user => {
+function signInUser(User, username, password, req, res) {
+    userService.getUser(User, username, user => {
         if (user.msg) {
             renderError(res, 'login', user.msg)
         } else {
