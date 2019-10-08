@@ -1,3 +1,5 @@
+
+  
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,37 +16,38 @@
   ul > li:hover {
     cursor: pointer;
   }
+  #button{
+display: inline-block;
+background-color:#fc999b;
+color:#ffffff;
+border-radius: 5px;
+text-align:center;
+margin-top:2px;
+padding: 5px 15px;
+}
 </style>
 <body>
-  <div class="container mt-5">
-    <div class="row">
-      <div class="col-8 form-group">
-          <input class="form-control" id="newTodo" type="text" placeholder="Today i must...">
-          <small class="form-text text-muted">Add a new todo</small>
-      </div>
-      <div class="col-4">
-        <div class="flex-row justify-content-center align-items-center"> 
-          <button class="btn btn-primary mt-1 mt-md-0" onclick="addTodo()">ADD +</button>
-          <button class="btn btn-secondary mt-1 mt-md-0" >Reset</button>
-          <button class="btn btn-danger mt-1" onclick="removeTodos()">Bin</button>
-        </div>
-      </div>
-    </div>
-    
-    <div class="row mt-2">
-      <div class="col-10 offset-1">
-          <ul class="list-group">
-        
-            </ul>
-      </div>
-      
-    </div>
-    
-
-  </div>
-
-
+       
+                
+                <div class="container">
+                    <h2>ToDo List</h2>
+                <p><em>double click to cross an item off.</em></p>
+                   
+                    <form name="toDoList">
+                        <input type="text" name="ListItem"/>
+                    </form>
+                
+                    <div id="button">Add</div>
+                    <br/>
+                    <ol></ol>
+                  
+                  
+                
+                </div>
+                
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  
   <script src="index.js" defer></script>
 </body>
 </html>
