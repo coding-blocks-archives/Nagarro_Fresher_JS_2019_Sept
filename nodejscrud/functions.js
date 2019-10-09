@@ -6,10 +6,11 @@ module.exports = {
         mysqlConnection.query('SELECT * FROM BAND WHERE USERID = (SELECT id FROM USER where username = ?)', [username], (err, rows, field) => {
             if (!err) {
                 req.session.band = rows;
-                res.redirect("/");
+                
             }
             else
                 console.log(err);
+            res.redirect("/");
         });
     },
 
@@ -57,22 +58,22 @@ module.exports = {
     },
 
     authUser: function(req, res, username, password){
+        console.log(password);
         mysqlConnection.query("SELECT * FROM USER WHERE USERNAME = ? AND UPASSWORD = ?",[username, password], (err,rows, field) => {
             if(!err){
                 if(rows.length!=0){
                     req.session.user = username;
                     req.session.userid = rows[0].id;
-                    this.getBands(req, res);
                 }
                 else
-                req.session.LoginFailureStatus = "No User exist :(";               
+                    req.session.LoginFailureStatus = "No User exist :(";               
             }
             else{
                 req.session.LoginFailureStatus = err;
             }
             req.session.SighnupSuccessStatus = '';
             req.session.SighnupFailureStatus = '';
-            res.redirect("/");
+            this.getBands(req, res);
         });  
     },
 
@@ -80,8 +81,10 @@ module.exports = {
         mysqlConnection.query("INSERT INTO USER (USERNAME, UPASSWORD) VALUES( ?, ?)",[username, password], (err, field) => {
             if(!err){
                 req.session.SighnupSuccessStatus = "Account Create Successfully";   
+                req.session.SighnupFailureStatus = '';
             }
             else{
+                req.session.SighnupSuccessStatus = '';
                 req.session.SighnupFailureStatus = err.sqlMessage;
             }
             req.session.LoginFailureStatus = '';

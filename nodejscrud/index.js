@@ -5,8 +5,8 @@ const exphbs = myConfig.exphbs;
 const session = myConfig.session;
 const bodyparser = myConfig.bodyparser;
 const port = process.env.PORT || 8080;
-
-
+const methodOverride = require('method-override');
+const crypto = require('crypto');
 app.engine('hbs', exphbs({
     defaultLayout: '',
 }));
@@ -14,13 +14,15 @@ app.engine('hbs', exphbs({
 app.set('view engine', 'hbs');
 app.set('views', 'views');
 
-app.use(session({
-    secret: "nobody should guess this",
-    saveUninitialized: true,
-    cookie: { secure: false }
-}));
+// app.use(session({
+//     secret: "nobody should guess this",
+//     saveUninitialized: true,
+//     cookie: { secure: process.env.NODE_ENV == "production" ? true : false ,
+//     maxAge: 1000 * 60 * 60 * 24 * 7 }
+// }));
 
 app.use(bodyparser.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
 
 app.listen(port, () => console.log(`Listening on port ${port}..`));
 
@@ -38,17 +40,17 @@ app.get("/", loggedInOnly(), (req, res) => {
     })
 });
 
-app.get("/edit/:id", (req, res) => {
+app.put("/edit/:id", (req, res) => {
     functions.editBands(req, res, req.params.id);
 });
 
 app.post("/editband/:id", (req, res) => {
     const { bandname, description, no_of_members } = req.body;
     const id = req.params.id;
-    functions.updateBands(req,res, bandname, description, no_of_members, id);
+    functions.updateBands(req, res, bandname, description, no_of_members, id);
 });
 
-app.get("/delete/:id", (req, res) => {
+app.delete("/delete/:id", (req, res) => {
     const id = req.params.id;
     functions.deleteBands(req, res, id);
 });
@@ -66,7 +68,8 @@ app.get("/login", (req, res) => {
 });
 
 app.post("/login", (req, res) => {
-    const { username, password } = req.body;
+    const username = req.body.username;
+    const password = crypto.createHash('sha256').update(req.body.password).digest('base64');
     functions.authUser(req, res, username, password);
 });
 
@@ -77,7 +80,7 @@ app.get("/add", (req, res) => {
 app.post("/add", (req, res) => {
     const { bandname, description, no_of_members } = req.body;
     const username = req.session.user;
-    functions.addBands(req, res,bandname, description, no_of_members, username);
+    functions.addBands(req, res, bandname, description, no_of_members, username);
 });
 
 app.get("/logout", (req, res) => {
@@ -85,6 +88,7 @@ app.get("/logout", (req, res) => {
 });
 
 app.post("/signup", (req, res) => {
-    const { username, password } = req.body;
+    const username = req.body.username;
+    const password = crypto.createHash('sha256').update(req.body.password).digest('base64');
     functions.addUser(req, res, username, password);
 })

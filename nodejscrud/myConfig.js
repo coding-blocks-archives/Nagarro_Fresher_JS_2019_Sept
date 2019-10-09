@@ -4,5 +4,6 @@ module.exports = {
     exphbs: require('express-handlebars'),
     bodyparser: require('body-parser'),
     session: require('express-session'),
-    app: express()
+    app: express(),
+    express: express
 };

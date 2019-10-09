@@ -10,6 +10,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <title>Band</title>
+    <style>
+        .editAndDelete {
+            border: none;
+            background: #fff;
+            color: blue;
+        }
+    </style>
 </head>
 
 <body>
@@ -33,14 +40,15 @@
                     <td>{{description}}</td>
                     <td>{{number_of_members}}</td>
                     <td>
-                        <a href="/edit/{{id}}" >
-                           <i class='far fa-edit' style='font-size:24px'></i>
-                        </a>
+                        <form action="/edit/{{id}}?_method=PUT" method="post">
+                            <button class="editAndDelete" type="submit"><i class='far fa-edit' style='font-size:24px'></i></button>
+                        </form>
                     </td>
-                     <td>
-                        <a href="/delete/{{id}}" >
-                            <i class='fas fa-trash-restore-alt' style='font-size:24px'></i>
-                        </a>
+                    <td>
+                        <form action="/delete/{{id}}?_method=DELETE" method="post">
+                            <button class="editAndDelete" type="submit"><i class='fas fa-trash-restore-alt'
+                                    style='font-size:24px'></i></button>
+                        </form>
                     </td>
                 </tr>
                 {{/each}}
