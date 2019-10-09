@@ -1,5 +1,7 @@
 const myConfig = require('./myConfig.js');
 const functions = require('./functions.js');
+const User = require('./Sequelize.js').User;
+const Band = require('./Sequelize.js').Band;
 const app = myConfig.app;
 const exphbs = myConfig.exphbs;
 const session = myConfig.session;
@@ -11,15 +13,16 @@ app.engine('hbs', exphbs({
     defaultLayout: '',
 }));
 
+
+
 app.set('view engine', 'hbs');
 app.set('views', 'views');
 
-// app.use(session({
-//     secret: "nobody should guess this",
-//     saveUninitialized: true,
-//     cookie: { secure: process.env.NODE_ENV == "production" ? true : false ,
-//     maxAge: 1000 * 60 * 60 * 24 * 7 }
-// }));
+app.use(session({
+    secret: "nobody should guess this",
+    saveUninitialized: true,
+    cookie: { secure: false }
+}));
 
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
@@ -41,18 +44,18 @@ app.get("/", loggedInOnly(), (req, res) => {
 });
 
 app.put("/edit/:id", (req, res) => {
-    functions.editBands(req, res, req.params.id);
+    functions.editBands(req, res);
 });
 
 app.post("/editband/:id", (req, res) => {
     const { bandname, description, no_of_members } = req.body;
     const id = req.params.id;
-    functions.updateBands(req, res, bandname, description, no_of_members, id);
+    functions.editBand(req, res, id, bandname, description, no_of_members);
 });
 
 app.delete("/delete/:id", (req, res) => {
     const id = req.params.id;
-    functions.deleteBands(req, res, id);
+    functions.deleteBands(req,res, id);
 });
 
 app.get("/login", (req, res) => {
@@ -79,8 +82,7 @@ app.get("/add", (req, res) => {
 
 app.post("/add", (req, res) => {
     const { bandname, description, no_of_members } = req.body;
-    const username = req.session.user;
-    functions.addBands(req, res, bandname, description, no_of_members, username);
+    functions.addBands(req, res, bandname, description, no_of_members);
 });
 
 app.get("/logout", (req, res) => {
@@ -88,7 +90,6 @@ app.get("/logout", (req, res) => {
 });
 
 app.post("/signup", (req, res) => {
-    const username = req.body.username;
-    const password = crypto.createHash('sha256').update(req.body.password).digest('base64');
-    functions.addUser(req, res, username, password);
+    const {username, password} = req.body;
+    functions.addUser(req, res, username, crypto.createHash('sha256').update(password).digest('base64'));
 })

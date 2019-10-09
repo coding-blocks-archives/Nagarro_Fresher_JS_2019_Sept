@@ -1,99 +1,104 @@
-const mysqlConnection = require('./mysqlConnection.js').mysqlConnection;
-
+const User = require('./Sequelize.js').User;
+const Band = require('./Sequelize.js').Band;
 module.exports = {
-    getBands: function (req, res) {
-        username = req.session.user;
-        mysqlConnection.query('SELECT * FROM BAND WHERE USERID = (SELECT id FROM USER where username = ?)', [username], (err, rows, field) => {
-            if (!err) {
-                req.session.band = rows;
-                
+    editBands: function (req, res) {
+        Band.findOne({
+            where: { id: req.params.id }
+        }).then(
+            bands => {
+                var band = {
+                    id: bands.id,
+                    bandname: bands.bandname,
+                    description: bands.description,
+                    number_of_members: bands.number_of_members
+                };
+                res.render("edit", {
+                    band: band
+                })
             }
-            else
-                console.log(err);
-            res.redirect("/");
-        });
+        )
     },
 
-    editBands: function (req, res, id){
-        mysqlConnection.query("SELECT * FROM BAND WHERE ID = ?", [id], (err, rows, field) => {
-            var band = {
-                id: rows[0].id,
-                bandname: rows[0].bandname,
-                description: rows[0].description,
-                number_of_members: rows[0].number_of_members
-            };
-            res.render("edit", {
-                band: band
-            })
-        })
-    },
-
-    updateBands: function(req, res, bandname, description, number_of_members, id){
-        mysqlConnection.query("UPDATE BAND SET BANDNAME = ?, DESCRIPTION = ?, NUMBER_OF_MEMBERS = ? WHERE ID = ? AND USERID = ?", [bandname, description, number_of_members, id, req.session.userid], (err, rows, field) => {
-            if (!err) {
-                this.getBands(req, res);
+    editBand: function (req, res, id, bandname, description, no_of_members) {
+        Band.findOne({
+            where: { id: id }
+        }).then(
+            band => {
+                band.update({
+                    bandname: bandname,
+                    description: description,
+                    number_of_members: no_of_members
+                }).then(setTimeout(function () {
+                    Band.findAll({ where: { userUserId: req.session.userid } }).then(
+                        bands => {
+                            req.session.band = bands;
+                            res.redirect("/");
+                        }
+                    )
+                }, 1000))
             }
-            else {
-                console.log(err);
-            }
-        })
+        );
     },
 
-    deleteBands: function(req, res, id){
-        mysqlConnection.query("DELETE FROM BAND WHERE ID = ? AND USERID = ?", [id, req.session.userid], (err, field) => {
-            if (!err)
-                this.getBands(req, res);
-            else
-                console.log(err);
-        })
-    },
-
-    addBands: function(req, res, bandname, description, no_of_members, username){
-        mysqlConnection.query("INSERT INTO BAND (BANDNAME, USERID, DESCRIPTION, NUMBER_OF_MEMBERS) VALUES (?, (SELECT ID FROM USER WHERE USERNAME = ?), ?, ?)", [bandname, username, description, no_of_members], (err, field) => {
-            if (!err)
-                this.getBands(req, res);
-            else
-                console.log(err);
-        })
-    },
-
-    authUser: function(req, res, username, password){
-        console.log(password);
-        mysqlConnection.query("SELECT * FROM USER WHERE USERNAME = ? AND UPASSWORD = ?",[username, password], (err,rows, field) => {
-            if(!err){
-                if(rows.length!=0){
-                    req.session.user = username;
-                    req.session.userid = rows[0].id;
+    deleteBands: function (req, res, bid) {
+        Band.destroy({
+            where: { id: bid }
+        }).then(
+            Band.findAll({ where: { userUserId: req.session.userid } }).then(
+                bands => {
+                    req.session.band = bands;
+                    res.redirect("/");
                 }
-                else
-                    req.session.LoginFailureStatus = "No User exist :(";               
-            }
-            else{
-                req.session.LoginFailureStatus = err;
-            }
-            req.session.SighnupSuccessStatus = '';
-            req.session.SighnupFailureStatus = '';
-            this.getBands(req, res);
-        });  
+            )
+        )
     },
 
-    addUser: function(req, res, username, password){
-        mysqlConnection.query("INSERT INTO USER (USERNAME, UPASSWORD) VALUES( ?, ?)",[username, password], (err, field) => {
-            if(!err){
-                req.session.SighnupSuccessStatus = "Account Create Successfully";   
-                req.session.SighnupFailureStatus = '';
+    authUser: function (req, res, username, password) {
+        User.findOne({
+            where: { username: username, upassword: password }
+        }).then(
+            user => {
+                if (user) {
+                    req.session.user = username;
+                    req.session.userid = user.user_id;
+                }
+                else {
+                    req.session.LoginFailureStatus = "No User exist :(";
+                }
+                res.redirect("/");
             }
-            else{
-                req.session.SighnupSuccessStatus = '';
-                req.session.SighnupFailureStatus = err.sqlMessage;
-            }
-            req.session.LoginFailureStatus = '';
-            res.redirect("/");
-        });  
+        );
     },
 
-    logout: function(req, res){
+    addBands: function (req, res, bandname, description, no_of_members) {
+        Band.create({
+            bandname: bandname,
+            description: description,
+            number_of_members: no_of_members,
+            userUserId: req.session.userid
+        }).then(setTimeout(function () {
+            Band.findAll({ where: { userUserId: req.session.userid } }).then(
+                bands => {
+                    req.session.band = bands;
+                    res.redirect("/");
+                }
+            )
+        }, 1000)
+        );
+    },
+
+    addUser: function (req, res, username, password) {
+        User.create({
+            username: username,
+            upassword: password
+        }).then(
+            req.session.SighnupSuccessStatus = "Account Create Successfully",
+            res.redirect("/")
+        );
+    },
+
+    logout: function (req, res) {
         req.session.destroy();
         res.redirect("/");
     }
-}
+}    
