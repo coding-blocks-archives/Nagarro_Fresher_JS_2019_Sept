@@ -1,7 +1,5 @@
 const myConfig = require('./myConfig.js');
 const functions = require('./functions.js');
-const User = require('./Sequelize.js').User;
-const Band = require('./Sequelize.js').Band;
 const app = myConfig.app;
 const exphbs = myConfig.exphbs;
 const session = myConfig.session;
