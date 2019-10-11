@@ -1,50 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
 <style>
+  .list-group-item {
+    background: #d5f5e3;
+  }
+
+  li {
+    font-weight: bold;
+  }
+
   .striked {
     text-decoration: line-through;
+    background: #d5dbdb;
   }
-  ul > li:hover {
+
+  .list-group li {
+    margin: 5px;
+  }
+
+  ul {
+    height: 350px;
+    overflow-y: scroll;
+  }
+
+  ul>li:hover {
     cursor: pointer;
   }
+  
+  #div{
+    background:  #82e0aa;
+    margin-left:100px;
+    margin-right:120px;
+    border:2px solid black;
+  }
 </style>
+
 <body>
+  <div class="alert alert-warning" role="alert">
+    <h1 style="text-align: center;">A Simple Todo Application</h1>
+  </div>
+
   <div class="container mt-5">
     <div class="row">
       <div class="col-8 form-group">
-          <input class="form-control" id="newTodo" type="text" placeholder="Today i must...">
-          <small class="form-text text-muted">Add a new todo</small>
+        <div class="input-group mb-3">
+          <input type="text" id="newTodo" class="form-control" placeholder="Today i must..." aria-label="Username"
+            aria-describedby="basic-addon1">
+        </div>
+        <input class="form-control" id="newDate" type="date" placeholder="date">
+        <!-- <small class="form-text text-muted">Add a new todo</small> -->
       </div>
       <div class="col-4">
-        <div class="flex-row justify-content-center align-items-center"> 
-          <button class="btn btn-primary mt-1 mt-md-0" onclick="addTodo()">ADD +</button>
-          <button class="btn btn-secondary mt-1 mt-md-0" >Reset</button>
-          <button class="btn btn-danger mt-1" onclick="removeTodos()">Bin</button>
+        <div class="flex-row justify-content-center align-items-center">
+          <button class="btn btn-primary " onclick="addTodo()">ADD ➕</button>
+          <button id="reset" class="btn btn-secondary mt-1 mt-md-0">Reset</button>
+          <button id="sort" class="btn btn-info">Sort</button>
+          <button class="btn btn-danger mt-0" onclick="removeTodos()">Clean</button>
         </div>
       </div>
     </div>
-    
+    <div id="div" class="alert alert-warning" role="alert">
+      <span class="span"><strong>Upcoming Tasks <span style="float:right"> Deadline</span></strong></span>
+    </div>
     <div class="row mt-2">
       <div class="col-10 offset-1">
-          <ul class="list-group">
-        
-            </ul>
+        <ul class="list-group">
+        </ul>
       </div>
-      
     </div>
-    
-
   </div>
-
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="index.js" defer></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
 </body>
 </html>
