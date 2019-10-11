@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>Band</title>
+</head>
+<body>
+    <div class="container">
+        <a href="/logout"><button class="btn btn-danger mt-4 mb-4" style="float: right"><b>LOGOUT</b></button></a>
+        <h2>Edit Band</h2>
+        <form action="/editband/{{band.id}}" method="post">
+            <div class="form-group">
+                <label for="bandname">Bandname:</label>
+                <input type="text" class="form-control" id="bandname" placeholder="Enter bandname" name="bandname" value="{{band.bandname}}" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea class="form-control" id="description" placeholder="Enter description" name="description" required>{{band.description}}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="no_of_members">Description:</label>
+                <input type="number" class="form-control" id="no_of_members" placeholder="Enter number of members" name="no_of_members" value="{{band.number_of_members}}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+</body> 
