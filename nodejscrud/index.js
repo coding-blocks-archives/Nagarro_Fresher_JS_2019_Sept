@@ -7,7 +7,6 @@ const bodyparser = myConfig.bodyparser;
 const port = process.env.PORT || 8080;
 const methodOverride = require('method-override');
 const crypto = require('crypto');
-var nodemailer = require('nodemailer');
 app.engine('hbs', exphbs({
     defaultLayout: '',
 }));
@@ -57,6 +56,11 @@ app.delete("/delete/:id", (req, res) => {
     functions.deleteBands(req, res, id);
 });
 
+app.post("/forgotpassword", (req, res) => {
+    const email = req.body.useremail;
+    functions.forgotpassword(req, res, email);
+})
+
 app.get("/login", (req, res) => {
     if (req.session.user) {
         res.redirect("/");
@@ -64,7 +68,10 @@ app.get("/login", (req, res) => {
         res.render("login", {
             signupSuccessStatus: req.session.SighnupSuccessStatus,
             signupFailureStatus: req.session.SighnupFailureStatus,
-            loginFailureStatus: req.session.LoginFailureStatus
+            loginFailureStatus: req.session.LoginFailureStatus,
+            login: "block",
+            forgot: "none",
+            new: "none"
         });
     }
 });
@@ -72,6 +79,7 @@ app.get("/login", (req, res) => {
 app.post("/login", (req, res) => {
     const useremail = req.body.useremail;
     const password = crypto.createHash('sha256').update(req.body.password).digest('base64');
+    
     functions.authUser(req, res, useremail, password);
 });
 
@@ -91,4 +99,10 @@ app.get("/logout", (req, res) => {
 app.post("/signup", (req, res) => {
     const { username, password, useremail, userdob } = req.body;
     functions.addUser(req, res, username, crypto.createHash('sha256').update(password).digest('base64'), useremail, userdob);
+});
+
+app.post("/newpassword", (req, res) => {
+    const {userotp, newpassword} = req.body;
+    const email =  req.session.useremail;
+    functions.newpassword(req, res, email, userotp, crypto.createHash('sha256').update(newpassword).digest('base64'));
 })

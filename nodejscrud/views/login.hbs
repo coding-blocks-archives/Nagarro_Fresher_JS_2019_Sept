@@ -15,8 +15,8 @@
 <body>
     <div class="container mt-5">
         <div class="row">
-            <div class="col-sm-6">
-                <div class="container">
+            <div class="col-sm-6 ">
+                <div class="container login-container" style="display: {{login}}">
                     <h2>Login</h2>
                     {{#if loginFailureStatus}}
                     <div class="alert alert-danger">
@@ -33,6 +33,44 @@
                             <label for="pwd">Password:</label>
                             <input type="password" class="form-control" id="password" placeholder="Enter password"
                                 name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <a href="#" style="float: right" class="forgotpassword">forgot password</a>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+
+                <div class="container forget-password-container" style="display: {{forgot}}">
+                    <h2>Forgot Password</h2>
+                    <div class="alert alert-danger" style="display: {{forgot}}">
+                        <strong>Sorry!</strong> {{message}}
+                    </div>
+                    <form action="/forgotpassword" method="post">
+                        <div class="form-group">
+                            <label for="useremail">Useremail:</label>
+                            <input type="text" class="form-control" id="useremail" placeholder="Enter useremail"
+                                name="useremail" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+
+                <div class="container new-password-container" style="display: {{new}}">
+                    <h2>New Password</h2>
+                    <div class="alert alert-danger" style="display: {{otpmessageShow}}">
+                        <strong>Sorry!</strong> {{otpmessage}}
+                    </div>
+                    <form action="/newpassword" method="post">
+                        <div class="form-group">
+                            <label for="userotp">OTP:</label>
+                            <input type="text" class="form-control" id="userotp" placeholder="Enter otp"
+                                name="userotp" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newpassword">New Password:</label>
+                            <input type="password" class="form-control" id="newpassword" placeholder="Enter new password"
+                                name="newpassword" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
@@ -84,6 +122,12 @@
                 $(this).remove();
             });
         }, 4000);
+        $(".forgotpassword").click(function () {
+            $(".login-container").hide();
+            $(".new-password-container").hide();
+            $(".forget-password-container").show();
+        });
+
     </script>
 </body>
 

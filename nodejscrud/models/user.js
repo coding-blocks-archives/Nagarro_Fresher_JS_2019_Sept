@@ -20,6 +20,14 @@ module.exports = (sequelize, type) => {
         upassword:{
             type: type.STRING,
             dafaultValue: null
+        },
+        userotp:{
+            type: type.STRING,
+            defaultValue: null
+        },
+        validTill:{
+            type: type.DOUBLE,
+            defaultValue: 0
         }
     })
 }

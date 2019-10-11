@@ -19,6 +19,7 @@
     "mysql": "^2.17.1",
     "mysql2": "^1.7.0",
     "nodemailer": "^6.3.1",
+    "randomstring": "^1.1.5",
     "redis": "^2.8.0",
     "sequelize": "^5.19.4",
     "sha256": "^0.2.0"
