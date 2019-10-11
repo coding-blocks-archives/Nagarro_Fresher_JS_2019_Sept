@@ -9,6 +9,14 @@ module.exports = (sequelize, type) => {
             type: type.STRING,
             defaultValue: null
         },
+        useremail: {
+            type: type.STRING,
+            defaultValue: null
+        },
+        userdob:{
+            type: type.STRING,
+            defaultValue: null
+        },
         upassword:{
             type: type.STRING,
             dafaultValue: null

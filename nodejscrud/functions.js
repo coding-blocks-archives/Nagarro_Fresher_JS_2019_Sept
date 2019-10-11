@@ -53,17 +53,18 @@ module.exports = {
         )
     },
 
-    authUser: function (req, res, username, password) {
+    authUser: function (req, res, useremail, password) {
         User.findOne({
-            where: { username: username, upassword: password }
+            where: { useremail: useremail, upassword: password }
         }).then(
             user => {
                 if (user) {
-                    req.session.user = username;
+                    req.session.user = user;
                     req.session.userid = user.user_id;
                 }
                 else {
                     req.session.LoginFailureStatus = "No User exist :(";
+                    req.session.SighnupSuccessStatus = '';
                 }
                 res.redirect("/");
             }
@@ -87,10 +88,12 @@ module.exports = {
         );
     },
 
-    addUser: function (req, res, username, password) {
+    addUser: function (req, res, username, password, useremail, userdob) {
         User.create({
             username: username,
-            upassword: password
+            upassword: password,
+            userdob: userdob,
+            useremail: useremail
         }).then(
             req.session.SighnupSuccessStatus = "Account Create Successfully",
             res.redirect("/")

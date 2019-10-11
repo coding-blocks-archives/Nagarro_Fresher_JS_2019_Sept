@@ -7,6 +7,7 @@ const bodyparser = myConfig.bodyparser;
 const port = process.env.PORT || 8080;
 const methodOverride = require('method-override');
 const crypto = require('crypto');
+var nodemailer = require('nodemailer');
 app.engine('hbs', exphbs({
     defaultLayout: '',
 }));
@@ -53,7 +54,7 @@ app.post("/editband/:id", (req, res) => {
 
 app.delete("/delete/:id", (req, res) => {
     const id = req.params.id;
-    functions.deleteBands(req,res, id);
+    functions.deleteBands(req, res, id);
 });
 
 app.get("/login", (req, res) => {
@@ -69,9 +70,9 @@ app.get("/login", (req, res) => {
 });
 
 app.post("/login", (req, res) => {
-    const username = req.body.username;
+    const useremail = req.body.useremail;
     const password = crypto.createHash('sha256').update(req.body.password).digest('base64');
-    functions.authUser(req, res, username, password);
+    functions.authUser(req, res, useremail, password);
 });
 
 app.get("/add", (req, res) => {
@@ -88,6 +89,6 @@ app.get("/logout", (req, res) => {
 });
 
 app.post("/signup", (req, res) => {
-    const {username, password} = req.body;
-    functions.addUser(req, res, username, crypto.createHash('sha256').update(password).digest('base64'));
+    const { username, password, useremail, userdob } = req.body;
+    functions.addUser(req, res, username, crypto.createHash('sha256').update(password).digest('base64'), useremail, userdob);
 })
