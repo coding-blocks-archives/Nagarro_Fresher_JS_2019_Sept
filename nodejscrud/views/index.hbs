@@ -20,8 +20,20 @@
 </head>
 
 <body>
+    <nav class="navbar  navbar-dark bg-dark">
+        {{!-- <a href="/logout"><button class="btn btn-danger mt-1 mb-1 mr-sm-2"><b>LOGOUT</b></button></a> --}}
+        <a href="/" style="text-decoration: none;"><h3 class="" style="color: #fff">My Band App</h3></a>
+        
+        <div class="dropdown" style="width: 90px">
+            <img src="https://www.w3schools.com/howto/img_avatar.png" style="width: 55%; height: 10%; border-radius: 50%; cursor: pointer;" alt="" class="ropdown-toggle" id="dropdownMenuButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="/profile">Profile</a>
+                <a class="dropdown-item" href="/logout">Logout</a>
+                </div>
+        </div>
+    </nav>
     <div class="container">
-        <a href="/logout"><button class="btn btn-danger mt-4 mb-4" style="float: right"><b>LOGOUT</b></button></a>
         <table class="table mt-5">
             <thead class="thead-dark">
                 <tr>
@@ -41,7 +53,8 @@
                     <td>{{number_of_members}}</td>
                     <td>
                         <form action="/edit/{{id}}?_method=PUT" method="post">
-                            <button class="editAndDelete" type="submit"><i class='far fa-edit' style='font-size:24px'></i></button>
+                            <button class="editAndDelete" type="submit"><i class='far fa-edit'
+                                    style='font-size:24px'></i></button>
                         </form>
                     </td>
                     <td>

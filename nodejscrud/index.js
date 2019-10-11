@@ -105,4 +105,10 @@ app.post("/newpassword", (req, res) => {
     const {userotp, newpassword} = req.body;
     const email =  req.session.useremail;
     functions.newpassword(req, res, email, userotp, crypto.createHash('sha256').update(newpassword).digest('base64'));
-})
+});
+
+app.get("/profile", (req, res) => {
+    res.render("profile",{
+        user: req.session.user
+    });
+});

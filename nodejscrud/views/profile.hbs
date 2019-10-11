@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <title>Band</title>
+    <style>
+        .editAndDelete {
+            border: none;
+            background: #fff;
+            color: blue;
+        }
+
+        body {
+            overflow: hidden;
+        }
+
+        input{
+            display: inline !important;
+            width: 80% !important;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar  navbar-dark bg-dark">
+        {{!-- <a href="/logout"><button class="btn btn-danger mt-1 mb-1 mr-sm-2"><b>LOGOUT</b></button></a> --}}
+        <a href="/" style="text-decoration: none;">
+            <h3 class="" style="color: #fff">My Band App</h3>
+        </a>
+        <div class="dropdown" style="width: 90px">
+            <img src="https://www.w3schools.com/howto/img_avatar.png"
+                style="width: 55%; height: 10%; border-radius: 50%; cursor: pointer;" alt="" class="ropdown-toggle"
+                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="/profile">Profile</a>
+                <a class="dropdown-item" href="/logout">Logout</a>
+            </div>
+        </div>
+    </nav>
+    <div class="conatiner">
+        <div class="row">
+            <div class="col-sm-6">
+                <img src="https://www.w3schools.com/howto/img_avatar.png"
+                    style="width: 80%; padding: 20px; border-radius: 50%">
+            </div>
+            <div class="col-sm-6 p-5">
+                <div class="form-group">
+                    <br><br>
+                    <label for="username"><b>Username:</b></label>
+                    <input type="text" class="form-control" id="username" value="{{user.username}}" readonly>
+                    <br><br>
+                    <label for="useremail"><b>Useremail:</b></label>
+                    <input type="text" class="form-control" id="useremail" value="{{user.useremail}}" readonly>
+                    <br><br>
+                    <label for="userdob"><b>User DOB:</b></label>
+                    <input type="date" class="form-control" id="userdob" value="{{user.userdob}}" readonly>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

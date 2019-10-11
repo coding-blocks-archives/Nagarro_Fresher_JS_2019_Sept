@@ -11,12 +11,12 @@ module.exports = {
             secure: false,
             port: 25,
             auth: {
-                user: 'xyz@gmail.com',
-                pass: 'xyz'
+                user: 'ganshul917@gmail.com',
+                pass: 'Anshul@13'
             }
         });
         const message = {
-            from: 'xyz@gmail.com',
+            from: 'ganshul917@gmail.com',
             to: email,
             subject: 'Forgot Password',
             text: "Your OTP is: " + logintoken
