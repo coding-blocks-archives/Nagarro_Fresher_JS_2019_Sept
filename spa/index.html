@@ -14,6 +14,25 @@
   ul > li:hover {
     cursor: pointer;
   }
+  ul{
+    list-style-type:none
+  }
+  button{
+    float:right;
+  } 
+  ul {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+li {
+  text-align: left;
+  padding: 16px;
+}
+li:nth-child(odd) {
+  background-color: #f2f2f2
+} 
 </style>
 <body>
   <div class="container mt-5">
@@ -21,12 +40,17 @@
       <div class="col-8 form-group">
           <input class="form-control" id="newTodo" type="text" placeholder="Today i must...">
           <small class="form-text text-muted">Add a new todo</small>
+
+          <input class="form-control" id="deadline" type="date" placeholder="Enter deadline...">
+          <small class="form-text text-muted" >Add a deadline</small>
       </div>
       <div class="col-4">
         <div class="flex-row justify-content-center align-items-center"> 
-          <button class="btn btn-primary mt-1 mt-md-0" onclick="addTodo()">ADD +</button>
-          <button class="btn btn-secondary mt-1 mt-md-0" >Reset</button>
+          <button class="btn btn-primary mt-1 " onclick="addTodo()">ADD +</button>
+          <button class="btn btn-secondary mt-1 " onclick="removeAllTodos()" >Reset</button>
           <button class="btn btn-danger mt-1" onclick="removeTodos()">Bin</button>
+          <button class="btn btn-danger mt-1" onclick="sortTodos()">Sort</button>
+
         </div>
       </div>
     </div>
@@ -40,10 +64,7 @@
       
     </div>
     
-
   </div>
-
-
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="index.js" defer></script>
 </body>
