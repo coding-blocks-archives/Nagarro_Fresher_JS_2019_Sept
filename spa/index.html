@@ -1,50 +1,104 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
   <title>Document</title>
+  
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.js">
 </head>
+
 <style>
+
   .striked {
+
     text-decoration: line-through;
+
   }
+
   ul > li:hover {
+
     cursor: pointer;
+
   }
+
 </style>
+
 <body>
+
   <div class="container mt-5">
+
     <div class="row">
+
       <div class="col-8 form-group">
+
           <input class="form-control" id="newTodo" type="text" placeholder="Today i must...">
+          <input class="form-control" id="deadLine" type="date" placeholder="Deadline Date...">
+
           <small class="form-text text-muted">Add a new todo</small>
+
       </div>
+
       <div class="col-4">
+
         <div class="flex-row justify-content-center align-items-center"> 
+
           <button class="btn btn-primary mt-1 mt-md-0" onclick="addTodo()">ADD +</button>
+
           <button class="btn btn-secondary mt-1 mt-md-0" >Reset</button>
+
           <button class="btn btn-danger mt-1" onclick="removeTodos()">Bin</button>
+          <button class="btn btn-danger mt-1" id="sort" onclick="sortTodos()">Sort</button>
+
+
         </div>
+
       </div>
+
     </div>
+
     
+
     <div class="row mt-2">
+
       <div class="col-10 offset-1">
+
           <ul class="list-group">
+
         
+
             </ul>
+
       </div>
+
       
+
     </div>
+
     
+
+
 
   </div>
 
 
+
+
+
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
   <script src="index.js" defer></script>
+
 </body>
+
 </html>
