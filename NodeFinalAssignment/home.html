@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Document</title>
+    <style>
+    ul{
+        list-style-type: none;
+    }
+    .float{
+        float:right;
+    }
+   
+    li{
+        border:1px solid black;
+        margin: 3px;
+       
+    }
+    li:hover{
+        font-size:20px;
+         background-color: lightgray;
+    }
+    .row1{
+        background-image:linear-gradient(to right,white,gray )
+
+    }
+    </style>
+</head>
+<body  >  
+    <div class= "container">
+        
+        <div class = "row row1 mt-3">
+            <div class = "col-6 ">
+                <h1>My Todo App</h1>
+            </div>
+            <div class = "col-3 mt-2">
+                <button id="MyList" class="float btn btn-primary ml-3">MyList</button>
+            </div> 
+            <div class = "col-3 ">
+                <h5>
+                    <a id="Logout" class="float mt-3" href="/Logout">Logout</a>
+                </h5>
+            </div>
+        </div>
+            <div class = "row mt-4">
+                 <div class = "col-12 ">
+                     <input  class ="mt-4 ml-0 rounded" style= "width:80%" type = "text" id = "newTask" placeholder="Please enter task">                    
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class = "col-12 mt-4 ml-0">
+                    <button id= "addTask" class = "btn btn-primary mt-1"><i class="fas fa-plus"> Add</i></button>
+                    <button id= "update" class = "btn btn-secondary mt-1"><strong><i class="far fa-popcorn"> Update</i></strong></button>
+                    <!-- <button id= "reset" class = "btn btn-secondary mt-1"><i class="fas fa-clock"> Reset</i></button>        
+                    <button id= "sort" class = "btn btn-success mt-1"><i class="fas fa-clock"> Sort by deadline</i></button>
+                    <button id= "sortbyItems" class = "btn btn-success mt-1"><i class="fas fa-sort"> Sort By Done/Undone</i></button>         -->
+                </div>
+            </div>   
+
+            <div class="row mt-4">
+                <div class="col-10 offset-1">
+                    <ul id ="taskList"></ul>
+                </div>
+            </div> 
+          </div>  
+        <script src="home1.js" defer></script>
+</body>
+</html>
