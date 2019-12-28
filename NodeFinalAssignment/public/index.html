@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <title>Document</title>
+
+    <style>
+        .container {
+            margin-right: 30%;
+            margin-left: 30%;
+        }
+
+        .float {
+            float: right;
+        }
+
+        .row1 {
+            background-image: linear-gradient(to right, white, gray);
+        }
+
+        body {
+            background-color: lightsteelblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="row row1 mt-3 ml-3 mr-3">
+        <div class="col-6 ">
+            <h1>My Todo App</h1>
+        </div>
+        <div class="col-3">
+
+        </div>
+        <div class="col-3 ">
+
+        </div>
+    </div>
+    <div class="container  ">
+        <form action="/SignUp" method="POST">
+
+            <div class="row">
+                <div class="col-2 mt-3">
+                    <label>User Name:</label>
+                </div>
+                <div class="col-10 mt-3">
+                    <input required id="username" name="username" type="text" placeholder="Enter Username">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2 mt-3">
+                    <label>Date of Birth:</label>
+                </div>
+                <div class="col-10 mt-3">
+                    <input required id="dob" name="dob" type="date" placeholder="Enter Date of birth">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2 mt-3">
+                    <label>Email:</label>
+                </div>
+                <div class="col-10 mt-3">
+                    <input id="email" required name="email" type="email" placeholder="Enter email">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2 mt-3">
+                    <label>Password:</label>
+                </div>
+                <div class="col-10 mt-3">
+                    <input id="pass" required name="password" type="password" placeholder="Enter password">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-2 mt-3">
+
+                </div>
+                <div class="col-2 mt-3 ">
+                    <button class="btn btn-success" id="signup">SignUp</button>
+                    <div class="col-0 mt-3">
+                        <a id="loginBtn" href="/login">click here to login</a>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <script src="SignUpscript.js"></script>
+    <script src='myList.js'></script>
+</body>
+
+</html>
