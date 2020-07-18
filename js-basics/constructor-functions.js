@@ -7,3 +7,4 @@ let p = new Person('Jane', 22)
 let p1 = new Person('Shaun', 44)
 
 let p2 = Person('John', 33)
+console.log('rajneesh');
